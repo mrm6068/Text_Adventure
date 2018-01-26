@@ -30,10 +30,15 @@ class MapTile:
  
         return moves
 
+        def beenThere(self):
+            self.visited = True
+
 
 class StartingRoom(MapTile):
     # override the intro_text method in the superclass
     def intro_text(self):
+
+        
         return """
         You find yourself in a cave with a flickering torch on the wall.
         You can make out four paths, each equally as dark and foreboding.
@@ -63,6 +68,12 @@ class EnemyRoom(MapTile):
         if self.enemy.is_alive():
             the_player.hp = the_player.hp - self.enemy.damage
             print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, the_player.hp))
+ 
+    def available_actions(self):
+        if self.enemy.is_alive():
+            return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy)]
+        else:
+            return self.adjacent_moves()
 
 class EmptyCavePath(MapTile):
     def intro_text(self):
@@ -98,21 +109,7 @@ class FindDaggerRoom(LootRoom):
         It's a dagger! You pick it up.
         """
 
-class EnemyRoom(MapTile):
-    def __init__(self, x, y, enemy):
-        self.enemy = enemy
-        super().__init__(x, y)
- 
-    def modify_player(self, the_player):
-        if self.enemy.is_alive():
-            the_player.hp = the_player.hp - self.enemy.damage
-            print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, the_player.hp))
- 
-    def available_actions(self):
-        if self.enemy.is_alive():
-            return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy)]
-        else:
-            return self.adjacent_moves()
+
 
 class LeaveCaveRoom(MapTile):
     def intro_text(self):

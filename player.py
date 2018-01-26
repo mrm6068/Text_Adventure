@@ -6,6 +6,8 @@ class Player():
         self.hp = 100
         self.location_x, self.location_y = world.starting_position
         self.victory = False
+        self.experience = 0
+        self.list = []
  
     def is_alive(self):
         return self.hp > 0
@@ -44,6 +46,8 @@ class Player():
         enemy.hp -= best_weapon.damage
         if not enemy.is_alive():
             print("You killed {}!".format(enemy.name))
+            self.experience += enemy.experience
+            print(self.experience)
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
 
@@ -51,3 +55,10 @@ class Player():
      action_method = getattr(self, action.method.__name__)
      if action_method:
                 action_method(**kwargs)
+
+
+    def flee(self, tile):
+        """Moves the player randomly"""
+        available_moves = tile.adjacent_moves()
+        r=random.randint(0, len(available_moves))
+        self.do_action(available_moves[r])
