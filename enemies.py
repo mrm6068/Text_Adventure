@@ -23,3 +23,7 @@ class Hellhound(Enemy):
 class Ant(Enemy):
     def __init__(self):
         super().__init__(name="Ant", hp=3, damage=1)
+
+class random1(Enemy):
+    def __init__(self):
+        super().__init__(name="Hellhound", hp=50, damage=20)
