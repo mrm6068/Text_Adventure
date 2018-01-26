@@ -14,4 +14,4 @@ class GiantSpider(Enemy):
  
 class Ogre(Enemy):
     def __init__(self):
-        super().__init__(name="Ogre", hp=30, damage=15)
+        super().__init__(name="Ogre2", hp=30, damage=15)
