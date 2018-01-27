@@ -36,7 +36,7 @@ class Player():
     def attack(self, enemy):
         best_weapon = None
         max_dmg = 0
-        for i in self.inventory:
+        for i in self.inventory:#Loops through inventory to find best weapon.
          if isinstance(i, items.Weapon):
             if i.damage > max_dmg:
                 max_dmg = i.damage
@@ -47,7 +47,8 @@ class Player():
         if not enemy.is_alive():
             print("You killed {}!".format(enemy.name))
             self.experience += enemy.experience
-            print(self.experience)
+            print("You gained {} XP".format(enemy.experience))
+            print("Total XP = {} ".format(self.experience))
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
 
