@@ -5,6 +5,7 @@ class MapTile:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.beenThere = False
 
     def intro_text(self):
         raise NotImplementedError()
@@ -52,17 +53,21 @@ class LootRoom(MapTile):
         super().__init__(x, y)
  
     def add_loot(self, player):
-        if ({self.x, self.y}) in player.visitList:
+        if (self.beenThere):
             return True
         else:
             player.inventory.append(self.item)
-            player.visitList.append({self.x, self.y})
+            #player.visitList.append([set(player.location_x, player.location_y.y)])
  
     def modify_player(self, player):
         self.add_loot(player)
+        #self.visitList += [player.location_x, player.location_y]
+
+    #def addVisited(self, player):
+        #self.visitList += [player.location_x, player.location_y]
 
 
-class HealthRoom(MapTile):
+class HealthRoom(MapTile):#Super to PotionRoom, ...
     def __init__(self, x, y, health):
         self.health = health
         super().__init__(x, y)
@@ -161,16 +166,18 @@ class FindDaggerRoom(LootRoom):
         super().__init__(x, y, items.Dagger())
  
     def intro_text(self):
-        if Player.hasVisited == True:
+        if self.beenThere == True:
             return """
             You have been here before...
             This is where you found a dagger!
             """
         else:
+            self.beenThere = True
             return """
             Your notice something shiny in the corner.
             It's a dagger! You pick it up.
             """
+
 
 
 

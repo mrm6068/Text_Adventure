@@ -7,17 +7,19 @@ class Player():
         self.location_x, self.location_y = world.starting_position
         self.victory = False
         self.experience = 0
-        self.visitList = []
+        self.visitList = [[]]
         self.level = 1
         self.nextLevelUp = 10
  
     def hasVisited(self):
-        if ({self.location_x, self.location_y}) in player.visitList:
+        if ([self.location_x, self.location_y]) in player.visitList:
             return True
             print("True" + self.visitList)
         else:
             return False
             print("false" + self.visitList)
+
+
 
     def is_alive(self):
 
