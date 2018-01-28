@@ -1,9 +1,11 @@
 import items, enemies, actions, world
+from player import Player
  
 class MapTile:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
     def intro_text(self):
         raise NotImplementedError()
  
@@ -27,11 +29,7 @@ class MapTile:
         """Returns all of the available actions in this room."""
         moves = self.adjacent_moves()
         moves.append(actions.ViewInventory())
- 
         return moves
-
-        def beenThere(self):
-            self.visited = True
 
 
 class StartingRoom(MapTile):
@@ -54,7 +52,11 @@ class LootRoom(MapTile):
         super().__init__(x, y)
  
     def add_loot(self, player):
-        player.inventory.append(self.item)
+        if ({self.x, self.y}) in player.visitList:
+            return True
+        else:
+            player.inventory.append(self.item)
+            player.visitList.append({self.x, self.y})
  
     def modify_player(self, player):
         self.add_loot(player)
@@ -159,10 +161,16 @@ class FindDaggerRoom(LootRoom):
         super().__init__(x, y, items.Dagger())
  
     def intro_text(self):
-        return """
-        Your notice something shiny in the corner.
-        It's a dagger! You pick it up.
-        """
+        if Player.hasVisited == True:
+            return """
+            You have been here before...
+            This is where you found a dagger!
+            """
+        else:
+            return """
+            Your notice something shiny in the corner.
+            It's a dagger! You pick it up.
+            """
 
 
 
