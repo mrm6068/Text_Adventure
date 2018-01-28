@@ -59,6 +59,43 @@ class LootRoom(MapTile):
     def modify_player(self, player):
         self.add_loot(player)
 
+
+class HealthRoom(MapTile):
+    def __init__(self, x, y, health):
+        self.health = health
+        super().__init__(x, y)
+ 
+    def add_hp(self, player):
+        player.hp += self.health
+        print("HP is {}".format(player.hp))
+ 
+    def modify_player(self, player):
+        self.add_hp(player)
+
+class PotionRoom(HealthRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, 25)#25 hp potion
+
+    def intro_text(self):
+        return """
+        You find a bottle and drink the purple potion.
+        You gained 25 HP!
+        """
+
+
+
+'''class VendorRoom(MapTile):
+    def __init__(self, x, y, item):
+        self.item = item
+        super().__init__(x, y)
+ 
+    def add_loot(self, player):
+        player.inventory.append(self.item)
+ 
+    def modify_player(self, player):
+        self.add_loot(player)'''
+
+
 class EnemyRoom(MapTile):
     def __init__(self, x, y, enemy):
         self.enemy = enemy
