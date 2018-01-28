@@ -8,6 +8,8 @@ class Player():
         self.victory = False
         self.experience = 0
         self.list = []
+        self.level = 1
+        self.nextLevelUp = 10
  
     def is_alive(self):
         return self.hp > 0
@@ -43,12 +45,22 @@ class Player():
                 best_weapon = i
  
         print("You use {} against {}!".format(best_weapon.name, enemy.name))
+        print("\n")
         enemy.hp -= best_weapon.damage
+
         if not enemy.is_alive():
             print("You killed {}!".format(enemy.name))
             self.experience += enemy.experience
             print("You gained {} XP".format(enemy.experience))
             print("Total XP = {} ".format(self.experience))
+            #Check for level up
+            if self.experience >= self.nextLevelUp:
+                self.level += 1#Level up
+                self.nextLevelUp *= 2 #Will get harder to level up each level.
+                print("You've reached level {}!".format(self.level))
+                print("Next level up at {} XP\n".format(self.nextLevelUp))
+
+  
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
 
