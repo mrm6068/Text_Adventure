@@ -12,6 +12,7 @@ class Player():
         self.nextLevelUp = 10
  
     def is_alive(self):
+
         if self.hp > 0:
             return self.hp > 0
         else:
