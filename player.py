@@ -1,4 +1,4 @@
-﻿import items, world
+﻿import items, world, random
  
 class Player():
     def __init__(self):
