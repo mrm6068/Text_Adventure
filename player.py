@@ -12,7 +12,10 @@ class Player():
         self.nextLevelUp = 10
  
     def is_alive(self):
-        return self.hp > 0
+        if self.hp > 0:
+            return self.hp > 0
+        else:
+            return False
  
     def print_inventory(self):
         for item in self.inventory:

@@ -98,6 +98,20 @@ class GiantSpiderRoom(EnemyRoom):
             return """
             The corpse of a dead spider rots on the ground.
             """
+
+class HellhoundRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Hellhound())
+ 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            A massive flaming dog growls angrily as you enter his lair.  
+            """
+        else:
+            return """
+            A Hellhound corpse.  How did I ever manage to kill that thing?
+            """
  
 class FindDaggerRoom(LootRoom):
     def __init__(self, x, y):

@@ -22,6 +22,8 @@ def play():
                 if action_input == action.hotkey:
                     player.do_action(action, **action.kwargs)
                     break
+    if player.is_alive() == False:
+        print("You died.")
 
 
 if __name__ == "__main__":#gg

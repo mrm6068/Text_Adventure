@@ -2,4 +2,4 @@
 		EmptyCavePath	GiantSpiderRoom	
 		EmptyCavePath		
 		EmptyCavePath		
-GiantSpiderRoom	EmptyCavePath	StartingRoom	EmptyCavePath	FindDaggerRoom
+GiantSpiderRoom	HellhoundRoom	StartingRoom	EmptyCavePath	FindDaggerRoom
