@@ -53,10 +53,8 @@ class LootRoom(MapTile):
         super().__init__(x, y)
  
     def add_loot(self, player):
-        if (self.beenThere):
-            return True
-        else:
-            player.inventory.append(self.item)
+        if not(self.beenThere):#If you have not been here...
+            player.inventory.append(self.item)#Add item to player inventory
             #player.visitList.append([set(player.location_x, player.location_y.y)])
  
     def modify_player(self, player):
@@ -87,6 +85,16 @@ class PotionRoom(HealthRoom):
         return """
         You find a bottle and drink the purple potion.
         You gained 25 HP!
+
+    /***\ 
+   /^^^^^\ 
+  /       \ 
+ < POTION  > 
+  \       / 
+   \     /
+    \___/
+   
+
         """
 
 
@@ -166,7 +174,7 @@ class FindDaggerRoom(LootRoom):
         super().__init__(x, y, items.Dagger())
  
     def intro_text(self):
-        if self.beenThere == True:
+        if self.beenThere:
             return """
             You have been here before...
             This is where you found a dagger!
