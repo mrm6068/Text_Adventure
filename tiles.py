@@ -5,7 +5,6 @@ class MapTile:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.beenThere = False
 
     def intro_text(self):
         raise NotImplementedError()
@@ -48,12 +47,14 @@ class StartingRoom(MapTile):
         pass
 
 class LootRoom(MapTile):
-    def __init__(self, x, y, item):
+    def __init__(self, x, y, item, beenThere):
         self.item = item
+        self.beenThere = False
         super().__init__(x, y)
  
     def add_loot(self, player):
-        if(self.beenThere == False):#If you have not been here...
+        #This is never trips , been there is already true
+        #if(self.beenThere == False):#If you have not been here...  
             player.inventory.append(self.item)#Add item to player inventory
             #player.visitList.append([set(player.location_x, player.location_y.y)])
  
@@ -171,7 +172,9 @@ class HellhoundRoom(EnemyRoom):
  
 class FindDaggerRoom(LootRoom):
     def __init__(self, x, y):
-        super().__init__(x, y, items.Dagger())
+       #self.beenThere = False
+        super().__init__(x, y, items.Dagger(), beenThere = False)
+
 
  
     def intro_text(self):
@@ -189,7 +192,7 @@ class FindDaggerRoom(LootRoom):
 
 
 
-
+           
 class LeaveCaveRoom(MapTile):
     def intro_text(self):
         return """
