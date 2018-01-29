@@ -1,6 +1,8 @@
-import items, enemies, actions, world, random
+import items, enemies, actions, world, random, winsound, os
 from player import Player
 import time
+
+dirname = os.path.dirname(__file__)
  
 class MapTile:
     def __init__(self, x, y):
@@ -74,8 +76,9 @@ class HealthRoom(MapTile):#Super to PotionRoom, ...
         player.hp += self.health
         if player.hp > player.maxHp:
             player.hp = player.maxHp
-
+        time.sleep(1)
         print("HP is {}\n".format(player.hp))
+        time.sleep(1)
  
     def modify_player(self, player):
         self.add_hp(player)
@@ -86,29 +89,36 @@ class PotionRoom(HealthRoom):
 
     def intro_text(self):
         if self.beenThere:
-            return """
-                \nThis is the room you found the potion.\n"""
+            return "\nBroken glass crunches under your feet.\nThis is the room you found the potion.\n"
+                
+       
 
         else:
             self.beenThere = True
             print( """\n   /***\\""")
-            time.sleep(1)
+            time.sleep(.8)
             print( """  /^^^^^\\""") 
-            time.sleep(1)
+            time.sleep(.8)
             print( """ /       \\""")
-            time.sleep(1)
+            time.sleep(.8)
             print( """< POTION  >""")
-            time.sleep(1)
+            time.sleep(.8)
             print( """ \       /""")
-            time.sleep(1)
+            time.sleep(.8)
             print( """  \     /""")
-            time.sleep(1)
+            time.sleep(.8)
             print( """   \___/\n""")
+            time.sleep(1)
+            print('You found a bottle and you drink the purple potion.\n')
+            #Create relative file path so it works on different systems.
+            winsound.PlaySound(os.path.join(dirname, 'drink_sound.WAV') , winsound.SND_FILENAME)
+            time.sleep(1)
+            print('You smash the bottle.')
+            winsound.PlaySound(os.path.join(dirname, 'break_glass.WAV') , winsound.SND_FILENAME)
             time.sleep(1)
 
             return """
-                \nYou found a bottle and you drink the purple potion.
-                You gained 25 HP!\n"""
+                \nYou gained 25 HP!\n"""
 
 
 '''class VendorRoom(MapTile):
@@ -215,6 +225,7 @@ class FindDaggerRoom(LootRoom):
             time.sleep(.7)
             print( """    ---""")
             time.sleep(.7)
+            s = pygame.mixer.Sound("drink_sound.mp3")
 
             return """
             Your notice something shiny in the corner.

@@ -77,8 +77,9 @@ class Player():
             Player.checkLevelUp(self)
 
         else:
+            time.sleep(2)
             print("{} HP is {}\n".format(enemy.name, enemy.hp))
-            time.sleep(1)
+            time.sleep(2)
 
     def checkLevelUp(self):
         if self.experience >= self.nextLevelUp:
