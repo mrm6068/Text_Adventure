@@ -1,5 +1,6 @@
 import items, enemies, actions, world
 from player import Player
+import time
  
 class MapTile:
     def __init__(self, x, y):
@@ -64,8 +65,9 @@ class LootRoom(MapTile):
 
 
 class HealthRoom(MapTile):#Super to PotionRoom, ...
-    def __init__(self, x, y, health):
+    def __init__(self, x, y, health, beenThere):
         self.health = health
+        self.beenThere = False
         super().__init__(x, y)
  
     def add_hp(self, player):
@@ -77,24 +79,33 @@ class HealthRoom(MapTile):#Super to PotionRoom, ...
 
 class PotionRoom(HealthRoom):
     def __init__(self, x, y):
-        super().__init__(x, y, 25)#25 hp potion
+        super().__init__(x, y, 25, beenThere = False)#25 hp potion
 
     def intro_text(self):
-        return """
-        You find a bottle and drink the purple potion.
-        You gained 25 HP!
+        if self.beenThere:
+            return """
+                \nThis is the room you found the potion.\n"""
 
-    /***\ 
-   /^^^^^\ 
-  /       \ 
- < POTION  > 
-  \       / 
-   \     /
-    \___/
-   
+        else:
+            self.beenThere = True
+            print( """\n   /***\\""")
+            time.sleep(1)
+            print( """  /^^^^^\\""") 
+            time.sleep(1)
+            print( """ /       \\""")
+            time.sleep(1)
+            print( """< POTION  >""")
+            time.sleep(1)
+            print( """ \       /""")
+            time.sleep(1)
+            print( """  \     /""")
+            time.sleep(1)
+            print( """   \___/\n""")
+            time.sleep(1)
 
-        """
-
+            return """
+                \nYou found a bottle and you drink the purple potion.
+                You gained 25 HP!\n"""
 
 
 '''class VendorRoom(MapTile):
