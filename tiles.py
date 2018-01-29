@@ -195,6 +195,23 @@ class FindDaggerRoom(LootRoom):
             This is where you found a dagger!
             """
         else:
+            print( """\n    /\\""")
+            time.sleep(1)
+            print( """   |  |""") 
+            time.sleep(1)
+            print( """   |  |""")
+            time.sleep(1)
+            print( """   |  |""")
+            time.sleep(1)
+            print( """ __|  |__""")
+            time.sleep(1)
+            print( """|___   __|""")
+            time.sleep(1)
+            print( """    | |""")
+            time.sleep(1)
+            print( """    ---""")
+            time.sleep(1)
+
             return """
             Your notice something shiny in the corner.
             It's a dagger! You pick it up.

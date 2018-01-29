@@ -55,17 +55,17 @@ class Player():
             if i.damage > max_dmg:
                 max_dmg = i.damage
                 best_weapon = i
- 
-        print("You use {} against {}!".format(best_weapon.name, enemy.name))
+
+        print("\nYou use {} against {}!".format(best_weapon.name, enemy.name))
         print("\n")
         enemy.hp -= best_weapon.damage
 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
-            time.sleep(1.2)
+            time.sleep(1.5)
             self.experience += enemy.experience
             print("You gained {} XP\n".format(enemy.experience))
-            time.sleep(1.2)
+            time.sleep(1.5)
             print("Total XP = {} \n".format(self.experience))
             time.sleep(1.2)
 
@@ -81,13 +81,13 @@ class Player():
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
                 print("You've reached level {}!\n".format(self.level))
-                time.sleep(1.2)
+                time.sleep(1.5)
                 print("Max HP increased to {}!\n".format(self.maxHp))
-                time.sleep(1.2)
+                time.sleep(1.5)
                 print("Total XP is {}!\n".format(self.maxHp))
-                time.sleep(1.2)
+                time.sleep(1.5)
                 print("Next level up at {} XP\n".format(self.nextLevelUp))
-                time.sleep(1.2)
+                time.sleep(1.5)
 
     def do_action(self, action, **kwargs):
      action_method = getattr(self, action.method.__name__)
