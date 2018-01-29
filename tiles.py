@@ -53,17 +53,14 @@ class LootRoom(MapTile):
         super().__init__(x, y)
  
     def add_loot(self, player):
-        #This is never trips , been there is already true
-        #if(self.beenThere == False):#If you have not been here...  
+        if(self.beenThere == False):#If you have not been here...  
             player.inventory.append(self.item)#Add item to player inventory
-            #player.visitList.append([set(player.location_x, player.location_y.y)])
+            self.beenThere = True
  
     def modify_player(self, player):
         self.add_loot(player)
-        #self.visitList += [player.location_x, player.location_y]
 
-    #def addVisited(self, player):
-        #self.visitList += [player.location_x, player.location_y]
+  
 
 
 class HealthRoom(MapTile):#Super to PotionRoom, ...
@@ -184,7 +181,6 @@ class FindDaggerRoom(LootRoom):
             This is where you found a dagger!
             """
         else:
-            self.beenThere = True
             return """
             Your notice something shiny in the corner.
             It's a dagger! You pick it up.
