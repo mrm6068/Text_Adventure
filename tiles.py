@@ -53,7 +53,7 @@ class LootRoom(MapTile):
         super().__init__(x, y)
  
     def add_loot(self, player):
-        if not(self.beenThere):#If you have not been here...
+        if(self.beenThere == False):#If you have not been here...
             player.inventory.append(self.item)#Add item to player inventory
             #player.visitList.append([set(player.location_x, player.location_y.y)])
  
@@ -172,6 +172,7 @@ class HellhoundRoom(EnemyRoom):
 class FindDaggerRoom(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.Dagger())
+
  
     def intro_text(self):
         if self.beenThere:
