@@ -72,7 +72,10 @@ class HealthRoom(MapTile):#Super to PotionRoom, ...
  
     def add_hp(self, player):
         player.hp += self.health
-        print("HP is {}".format(player.hp))
+        if player.hp > player.maxHp:
+            player.hp = player.maxHp
+
+        print("HP is {}\n".format(player.hp))
  
     def modify_player(self, player):
         self.add_hp(player)

@@ -1,4 +1,4 @@
-﻿import items, world, random
+﻿import items, world, random, time
  
 class Player():
     def __init__(self):
@@ -61,10 +61,13 @@ class Player():
         enemy.hp -= best_weapon.damage
 
         if not enemy.is_alive():
-            print("You killed {}!".format(enemy.name))
+            print("You killed {}!\n".format(enemy.name))
+            time.sleep(1.2)
             self.experience += enemy.experience
-            print("You gained {} XP".format(enemy.experience))
-            print("Total XP = {} ".format(self.experience))
+            print("You gained {} XP\n".format(enemy.experience))
+            time.sleep(1.2)
+            print("Total XP = {} \n".format(self.experience))
+            time.sleep(1.2)
 
             #Check for level up
             Player.checkLevelUp(self)
@@ -76,9 +79,15 @@ class Player():
         if self.experience >= self.nextLevelUp:
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
-                print("You've reached level {}!".format(self.level))
+                self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
+                print("You've reached level {}!\n".format(self.level))
+                time.sleep(1.2)
+                print("Max HP increased to {}!\n".format(self.maxHp))
+                time.sleep(1.2)
+                print("Total XP is {}!\n".format(self.maxHp))
+                time.sleep(1.2)
                 print("Next level up at {} XP\n".format(self.nextLevelUp))
-
+                time.sleep(1.2)
 
     def do_action(self, action, **kwargs):
      action_method = getattr(self, action.method.__name__)
