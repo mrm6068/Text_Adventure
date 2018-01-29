@@ -196,21 +196,21 @@ class FindDaggerRoom(LootRoom):
             """
         else:
             print( """\n    /\\""")
-            time.sleep(1)
+            time.sleep(.7)
             print( """   |  |""") 
-            time.sleep(1)
+            time.sleep(.7)
             print( """   |  |""")
-            time.sleep(1)
+            time.sleep(.7)
             print( """   |  |""")
-            time.sleep(1)
+            time.sleep(.7)
             print( """ __|  |__""")
-            time.sleep(1)
+            time.sleep(.7)
             print( """|___   __|""")
-            time.sleep(1)
+            time.sleep(.7)
             print( """    | |""")
-            time.sleep(1)
+            time.sleep(.7)
             print( """    ---""")
-            time.sleep(1)
+            time.sleep(.7)
 
             return """
             Your notice something shiny in the corner.

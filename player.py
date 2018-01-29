@@ -27,7 +27,9 @@ class Player():
         
  
     def print_inventory(self):
+        print('\n')
         for item in self.inventory:
+            time.sleep(2)#Show 1 at a time.
             print(item, '\n')
     
     def move(self, dx, dy):
@@ -82,9 +84,9 @@ class Player():
                 self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
                 print("You've reached level {}!\n".format(self.level))
                 time.sleep(1.5)
-                print("Max HP increased to {}!\n".format(self.maxHp))
+                print("Max HP increased to {}\n".format(self.maxHp))
                 time.sleep(1.5)
-                print("Total XP is {}!\n".format(self.maxHp))
+                print("Total XP is {}\n".format(self.maxHp))
                 time.sleep(1.5)
                 print("Next level up at {} XP\n".format(self.nextLevelUp))
                 time.sleep(1.5)
