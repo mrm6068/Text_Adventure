@@ -1,4 +1,4 @@
-import items, enemies, actions, world
+import items, enemies, actions, world, random
 from player import Player
 import time
  
@@ -135,7 +135,7 @@ class EnemyRoom(MapTile):
             if the_player.hp < 0:#No negative hp
                 the_player.hp = 0
 
-            print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, the_player.hp))
+            print("Enemy does {} damage. You have {} HP remaining\n".format(self.enemy.damage, the_player.hp))
  
     def available_actions(self):
         if self.enemy.is_alive():
@@ -145,9 +145,13 @@ class EnemyRoom(MapTile):
 
 class EmptyCavePath(MapTile):
     def intro_text(self):
-        return """
-        Another unremarkable part of the cave. You must forge onwards.
-        """
+        #Random intro text for each cave room.
+        text = []
+        text.append( "\nAnother unremarkable part of the cave. You must forge onwards.")
+        text.append("\nThis room is dark and empty.")
+        text.append("\nThere isn't much going on in this room.")
+        r = random.randint(0, len(text)-1)
+        return text[r]
  
     def modify_player(self, player):
         #Room has no action on player
