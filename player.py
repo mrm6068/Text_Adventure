@@ -106,3 +106,9 @@ class Player():
         available_moves = tile.adjacent_moves()
         r=random.randint(0, len(available_moves)-1)#Added -1 which i think fixed fleeing crash index out of range
         self.do_action(available_moves[r])
+
+    def checkInventory(self, item):
+        if item in self.inventory:
+            return true
+
+

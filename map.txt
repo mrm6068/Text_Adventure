@@ -3,4 +3,4 @@
 		EmptyCavePath		
 		EmptyCavePath	EmptyCavePath	FindDaggerRoom
 GiantSpiderRoom	HellhoundRoom	StartingRoom	EmptyCavePath	FindDaggerRoom
-		PotionRoom		
+		PotionRoom	SkullKeyRoom	SkullChestRoom

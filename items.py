@@ -47,3 +47,10 @@ class Pillow(Weapon):
                          description="A pillow for handling my soft work.",
                          value=1,
                          damage=1)
+
+class SkullKey(Item):
+    # __init__ is the contructor method
+    def __init__(self): 
+        super().__init__(name="Skull Key",
+                         description="An old key shaped like a skull",
+                         value=5)

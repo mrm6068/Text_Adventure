@@ -63,9 +63,6 @@ class LootRoom(MapTile):
     def modify_player(self, player):
         self.add_loot(player)
 
-  
-
-
 class HealthRoom(MapTile):#Super to PotionRoom, ...
     def __init__(self, x, y, health, beenThere):
         self.health = health
@@ -90,9 +87,7 @@ class PotionRoom(HealthRoom):
     def intro_text(self):
         if self.beenThere:
             return "\nBroken glass crunches under your feet.\nThis is the room you found the potion.\n"
-                
-       
-
+              
         else:
             self.beenThere = True
             print( """\n   /***\\""")
@@ -225,12 +220,69 @@ class FindDaggerRoom(LootRoom):
             time.sleep(.7)
             print( """    ---""")
             time.sleep(.7)
-            s = pygame.mixer.Sound("drink_sound.mp3")
 
             return """
             Your notice something shiny in the corner.
             It's a dagger! You pick it up.
             """
+
+class ChestRoom(LootRoom):
+    def __init__(self, x, y, item, key, beenThere, gotten):
+        self.item = item
+        self.key = key;
+        self.beenThere = False
+        self.gotten = False
+        super().__init__(x, y, item, beenThere)
+ 
+    def add_loot(self, player):
+        if(player.checkInventory(self.key)):
+            player.inventory.append(self.item)#Add item to player inventory
+            self.gotten = True;
+            self.beenThere = True
+ 
+    def modify_player(self, player):
+        self.add_loot(player)
+
+class SkullChestRoom(ChestRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Dagger(), beenThere = False, key = items.SkullKey(), gotten = False)
+
+    def intro_text(self):
+        if self.beenThere and not self.gotten:
+            return """
+            The chest with the skull shaped key is still locked.
+            """
+        elif self.beenThere and self.gotten:
+            return "You see the empty chest where you found the {}".format(self.item)
+        else: 
+            return"You find an old chest, the keyhole is shaped like a skull"
+
+class KeyRoom(LootRoom):
+    def __init__(self, x, y, item, key, beenThere):
+        self.item = item
+        self.key = key;
+        self.beenThere = False
+        super().__init__(x, y)
+ 
+    def add_loot(self, player):
+        if(self.beenThere):#If you have not been here...  
+            player.inventory.append(self.item)#Add item to player inventory
+            self.beenThere = True
+ 
+    def modify_player(self, player):
+        self.add_loot(player)
+
+class SkullKeyRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.SkullKey(), beenThere = False)
+
+    def intro_text(self):
+        if self.beenThere:
+            return """
+            your in the room where you found the skull key
+            """
+        else:
+            return"You find a key shaped like a skull"
 
 
 
