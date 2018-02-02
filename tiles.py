@@ -35,7 +35,6 @@ class MapTile:
         moves.append(actions.ViewInventory())
         return moves
 
-
 class StartingRoom(MapTile):
     # override the intro_text method in the superclass
     def intro_text(self, player):

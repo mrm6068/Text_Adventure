@@ -54,15 +54,18 @@ class Player():
         max_dmg = 0
         for i in self.inventory:#Loops through inventory to find best weapon.
          if isinstance(i, items.Weapon):
-            if i.damage > max_dmg:
-                max_dmg = i.damage
+            if i.minDamage > max_dmg:
+                #r=random.randint(i.minDamage, i.maxDamage)
+                max_dmg = i.minDamage
                 best_weapon = i
 
         print("\nYou use {} against {}\n".format(best_weapon.name, enemy.name))
+        #rolls a random int between min and max damage of weapon (in items class)
+        r=random.randint(i.minDamage, i.maxDamage)
         time.sleep(1)
-        print("{} lost {} HP\n".format(enemy.name, best_weapon.damage))
+        print("{} lost {} HP\n".format(enemy.name, r)) #prints out how much damage it rolled
         time.sleep(1)
-        enemy.hp -= best_weapon.damage
+        enemy.hp -= r #takes away the rolled integer between damage range
 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
@@ -99,7 +102,6 @@ class Player():
      action_method = getattr(self, action.method.__name__)
      if action_method:
                 action_method(**kwargs)
-
 
     def flee(self, tile):
         """Moves the player randomly"""
