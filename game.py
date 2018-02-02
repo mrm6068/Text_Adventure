@@ -1,4 +1,4 @@
-import world
+import world, time
 from player import Player
 #Git Test
 #Git test 2
@@ -7,7 +7,7 @@ def play():
     player = Player()
     #These lines load the starting room and display the textg
     room = world.tile_exists(player.location_x, player.location_y)
-    print(room.intro_text())
+    print(room.intro_text(player))#Added player to check inventory before text
     while player.is_alive() and not player.victory:
         room = world.tile_exists(player.location_x, player.location_y)
         room.modify_player(player)
