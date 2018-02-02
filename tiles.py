@@ -2,14 +2,15 @@ import items, enemies, actions, world, random, winsound, os
 from player import Player
 import time
 
-dirname = os.path.dirname(__file__)
+dirname = os.path.dirname(__file__)#For relative file path for sounds
  
 class MapTile:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
-    def intro_text(self):
+    #Added player because player inventory effects some entry text
+    def intro_text(self, player):
         raise NotImplementedError()
  
     def modify_player(self, player):
@@ -37,9 +38,8 @@ class MapTile:
 
 class StartingRoom(MapTile):
     # override the intro_text method in the superclass
-    def intro_text(self):
+    def intro_text(self, player):
 
-        
         return """
         You find yourself in a cave with a flickering torch on the wall.
         You can make out four paths, each equally as dark and foreboding.
@@ -57,6 +57,7 @@ class LootRoom(MapTile):
  
     def add_loot(self, player):
         if(self.beenThere == False):#If you have not been here...  
+            winsound.PlaySound(os.path.join(dirname, 'good.WAV') , winsound.SND_FILENAME)
             player.inventory.append(self.item)#Add item to player inventory
             self.beenThere = True
  
@@ -70,7 +71,9 @@ class HealthRoom(MapTile):#Super to PotionRoom, ...
         super().__init__(x, y)
  
     def add_hp(self, player):
+        #Add room's health to player health.
         player.hp += self.health
+        #hp can't be higher than max hp.
         if player.hp > player.maxHp:
             player.hp = player.maxHp
         time.sleep(1)
@@ -84,9 +87,10 @@ class PotionRoom(HealthRoom):
     def __init__(self, x, y):
         super().__init__(x, y, 25, beenThere = False)#25 hp potion
 
-    def intro_text(self):
+    def intro_text(self, player):
         if self.beenThere:
-            return "\nBroken glass crunches under your feet.\nThis is the room you found the potion.\n"
+            return "\nBroken glass crunches under your feet.\
+                    \nThis is the room you found the potion.\n"
               
         else:
             self.beenThere = True
@@ -105,7 +109,7 @@ class PotionRoom(HealthRoom):
             print( """   \___/\n""")
             time.sleep(1)
             print('You found a bottle and you drink the purple potion.\n')
-            #Create relative file path so it works on different systems.
+            #Uses relative file path so it works on different systems.
             winsound.PlaySound(os.path.join(dirname, 'drink_sound.WAV') , winsound.SND_FILENAME)
             time.sleep(1)
             print('You smash the bottle.')
@@ -149,12 +153,12 @@ class EnemyRoom(MapTile):
             return self.adjacent_moves()
 
 class EmptyCavePath(MapTile):
-    def intro_text(self):
-        #Random intro text for each cave room.
+    def intro_text(self, player):
+        #Random intro text for each empty cave room.
         text = []
-        text.append( "\nAnother unremarkable part of the cave. You must forge onwards.")
-        text.append("\nThis room is dark and empty.")
-        text.append("\nThere isn't much going on in this room.")
+        text.append( "\nAnother unremarkable part of the cave. You must forge onwards.\n")
+        text.append("\nThis room is dark and empty.\n")
+        text.append("\nThere isn't much going on in this room.\n")
         r = random.randint(0, len(text)-1)
         return text[r]
  
@@ -166,7 +170,7 @@ class GiantSpiderRoom(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.GiantSpider())
  
-    def intro_text(self):
+    def intro_text(self, player):
         if self.enemy.is_alive():
             return """
             A giant spider jumps down from its web in front of you!
@@ -180,7 +184,7 @@ class HellhoundRoom(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.Hellhound())
  
-    def intro_text(self):
+    def intro_text(self, player):
         if self.enemy.is_alive():
             return """
             A massive flaming dog growls angrily as you enter his lair.  
@@ -188,6 +192,21 @@ class HellhoundRoom(EnemyRoom):
         else:
             return """
             A Hellhound corpse.  How did I ever manage to kill that thing?
+            """
+
+class OgreRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Ogre())
+ 
+    def intro_text(self, player):
+        if self.enemy.is_alive():
+            winsound.PlaySound(os.path.join(dirname, 'ogre.WAV') , winsound.SND_FILENAME)
+            return """
+            Oh shit an ogre.  
+            """
+        else:
+            return """
+            Here's that dead ogre.
             """
  
 class FindDaggerRoom(LootRoom):
@@ -197,7 +216,7 @@ class FindDaggerRoom(LootRoom):
 
 
  
-    def intro_text(self):
+    def intro_text(self, player):
         if self.beenThere:
             return """
             You have been here before...
@@ -227,15 +246,17 @@ class FindDaggerRoom(LootRoom):
             """
 
 class ChestRoom(LootRoom):
-    def __init__(self, x, y, item, key, beenThere, gotten):
+    def __init__(self, x, y, item, key, gotKey, beenThere, gotBox):
         self.item = item
         self.key = key;
-        self.beenThere = False
-        self.gotten = False
+        self.gotKey = False
+        self.beenThere = False#Whether player has been in this room
+        self.gotBox = False
         super().__init__(x, y, item, beenThere)
  
     def add_loot(self, player):
         if(player.checkInventory(self.key)):
+            self.gotKey = True
             player.inventory.append(self.item)#Add item to player inventory
             self.gotten = True;
             self.beenThere = True
@@ -245,17 +266,32 @@ class ChestRoom(LootRoom):
 
 class SkullChestRoom(ChestRoom):
     def __init__(self, x, y):
-        super().__init__(x, y, items.Dagger(), beenThere = False, key = items.SkullKey(), gotten = False)
+        super().__init__(x, y, items.Dagger(), beenThere = False,\
+               key = items.SkullKey(), gotBox = False, gotKey = False)
 
-    def intro_text(self):
-        if self.beenThere and not self.gotten:
+    def intro_text(self, player):
+        self.gotKey = player.checkInventory(self.key)
+        if self.beenThere and not self.gotBox:
             return """
             The chest with the skull shaped key is still locked.
             """
-        elif self.beenThere and self.gotten:
-            return "You see the empty chest where you found the {}".format(self.item)
+        elif self.beenThere and self.gotBox:
+            return """
+            You see the empty chest where you found the {}
+            """.format(self.item)
+        elif self.gotKey and not self.gotBox:
+            winsound.PlaySound(os.path.join(dirname, 'chest_open.WAV') , winsound.SND_FILENAME)
+            self.gotBox = True
+            return """
+                    You see a chest with a skull keyhole.
+                    You use the skull key and open the chest.
+                    You obtained a {}.
+                    """.format(self.item) 
         else: 
-            return"You find an old chest, the keyhole is shaped like a skull"
+            return"""
+            You find an old chest, the keyhole is shaped like a skull.
+            It's locked.
+            """
 
 class KeyRoom(LootRoom):
     def __init__(self, x, y, item, key, beenThere):
@@ -276,19 +312,19 @@ class SkullKeyRoom(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.SkullKey(), beenThere = False)
 
-    def intro_text(self):
+    def intro_text(self, player):
         if self.beenThere:
             return """
             your in the room where you found the skull key
             """
         else:
-            return"You find a key shaped like a skull"
-
-
+            return"""
+            You find a key shaped like a skull
+            """
 
            
 class LeaveCaveRoom(MapTile):
-    def intro_text(self):
+    def intro_text(self, player):
         return """
         You see a bright light in the distance...
         ... it grows as you get closer! It's sunlight!

@@ -35,7 +35,7 @@ class Player():
     def move(self, dx, dy):
         self.location_x += dx
         self.location_y += dy
-        print(world.tile_exists(self.location_x, self.location_y).intro_text())
+        print(world.tile_exists(self.location_x, self.location_y).intro_text(self))
  
     def move_north(self):
         self.move(dx=0, dy=-1)
@@ -107,8 +107,12 @@ class Player():
         r=random.randint(0, len(available_moves)-1)#Added -1 which i think fixed fleeing crash index out of range
         self.do_action(available_moves[r])
 
+    #Needed to check for key when chestRoom reached
     def checkInventory(self, item):
-        if item in self.inventory:
-            return true
+        for _item in self.inventory:
+            #check inventory for instance of passed item(key)
+            if isinstance(_item, item.__class__):
+                return True
+        return False
 
 
