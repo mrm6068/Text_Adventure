@@ -54,15 +54,18 @@ class Player():
         max_dmg = 0
         for i in self.inventory:#Loops through inventory to find best weapon.
          if isinstance(i, items.Weapon):
-            if i.damage > max_dmg:
-                max_dmg = i.damage
+            if i.minDamage > max_dmg:
+                #r=random.randint(i.minDamage, i.maxDamage)
+                max_dmg = i.minDamage
                 best_weapon = i
 
         print("\nYou use {} against {}\n".format(best_weapon.name, enemy.name))
+        #rolls a random int between min and max damage of weapon (in items class)
+        r=random.randint(i.minDamage, i.maxDamage)
         time.sleep(1)
-        print("{} lost {} HP\n".format(enemy.name, best_weapon.damage))
+        print("{} lost {} HP\n".format(enemy.name, r)) #prints out how much damage it rolled
         time.sleep(1)
-        enemy.hp -= best_weapon.damage
+        enemy.hp -= r #takes away the rolled integer between damage range
 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
@@ -83,23 +86,22 @@ class Player():
 
     def checkLevelUp(self):
         if self.experience >= self.nextLevelUp:
-                self.level += 1#Level up
-                self.nextLevelUp *= 2 #Will get harder to level up each level.
-                self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
-                print("You've reached level {}!\n".format(self.level))
-                time.sleep(2)
-                print("Max HP increased to {}\n".format(self.maxHp))
-                time.sleep(2)
-                print("Total XP is {}\n".format(self.maxHp))
-                time.sleep(2)
-                print("Next level up at {} XP\n".format(self.nextLevelUp))
-                time.sleep(2)
+            self.level += 1#Level up
+            self.nextLevelUp *= 2 #Will get harder to level up each level.
+            self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
+            print("You've reached level {}!\n".format(self.level))
+            time.sleep(2)
+            print("Max HP increased to {}\n".format(self.maxHp))
+            time.sleep(2)
+            print("Total XP is {}\n".format(self.maxHp))
+            time.sleep(2)
+            print("Next level up at {} XP\n".format(self.nextLevelUp))
+            time.sleep(2)
 
     def do_action(self, action, **kwargs):
      action_method = getattr(self, action.method.__name__)
      if action_method:
                 action_method(**kwargs)
-
 
     def flee(self, tile):
         """Moves the player randomly"""
