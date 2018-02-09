@@ -1,8 +1,11 @@
-﻿import items, world, random, time
+﻿import items
+import world
+import random
+import time
  
 class Player():
     def __init__(self):
-        self.inventory = [items.Gold(15), items.Pillow()]
+        self.inventory = [items.Gold(15), items.Pillow(), items.Dagger()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position
@@ -11,6 +14,8 @@ class Player():
         self.level = 1
         self.money = 0
         self.nextLevelUp = 10
+        self.chosenWpn = None
+        self.currentWpn = None
  
     def hasVisited(self):
         if ([self.location_x, self.location_y]) in player.visitList:
@@ -26,12 +31,58 @@ class Player():
             return self.hp > 0
         
  
+    #def print_inventory(self):
+    #    print('\n')
+    #    for item in self.inventory:
+    #        print(item, '\n')
+    #        time.sleep(2)#Show 1 at a time.
+
+    #def inventory_choice(self):
+    #    while True:
+    #            print("i: Inventory")
+    #            print("e: Equip item")
+    #            inventory_option = input()
+
+    #            if inventory_option in ['i', 'e']:
+    #                # will exit loop when choice is made
+    #                break
+    #            if inventory_option == 'i':
+    #               return 'i'
+
+    #            elif inventory_option == 'e':
+    #                return 'e'
+                              
+
     def print_inventory(self):
-        print('\n')
-        for item in self.inventory:
-            print(item, '\n')
-            time.sleep(2)#Show 1 at a time.
-    
+         print("This is what you have so far from your travels.")
+         for item in self.inventory:
+             print(item, '\n')
+             #if not isinstance(item, items.Weapon):
+             #   print(item, '\n')
+         print("Currently you brandish your trusty", self.currentWpn.name, "in your hands.")
+                
+    def equip(self):
+        print("These are the weapons you currently possess.")
+
+        weapon_list = []
+        for item in self.inventory: 
+            if isinstance(item, items.Weapon):
+                #n+=1
+                #print(n, ".", item, '\n')
+                weapon_list.append(item)
+        for weapon in weapon_list:
+            print(weapon_list.index(weapon),".", weapon.name.)
+        #print(len(weapon_list))
+        self.chosenWpn = int(input("Select the weapon you want to equip: "))
+        #while self.chosenWpn < 0 or self.chosenWpn > len(weapon_list):
+        #    self.chosenWpn = int(input("Select the weapon you want to
+        #    equip."))
+        if self.chosenWpn >= 0 and self.chosenWpn < len(weapon_list):
+                print(weapon_list[self.chosenWpn].name, "equipped.")
+                self.currentWpn = weapon_list[self.chosenWpn]
+        else:
+            print("Invalid weapon chosen.")
+
     def move(self, dx, dy):
         self.location_x += dx
         self.location_y += dy
@@ -50,19 +101,19 @@ class Player():
         self.move(dx=-1, dy=0)
 
     def attack(self, enemy):
-        best_weapon = None
-        max_dmg = 0
-        for i in self.inventory:#Loops through inventory to find best weapon.
-         if isinstance(i, items.Weapon):
-            if i.damage > max_dmg:
-                max_dmg = i.damage
-                best_weapon = i
+        #best_weapon = None
+        #max_dmg = 0
+        #for i in self.inventory:#Loops through inventory to find best weapon.
+        # if isinstance(i, items.Weapon):
+        #    if i.damage > max_dmg:
+        #        max_dmg = i.damage
+        #        best_weapon = i
 
-        print("\nYou use {} against {}\n".format(best_weapon.name, enemy.name))
+        print("\nYou use {} against {}\n".format(self.currentWpn.name, enemy.name))
         time.sleep(1)
-        print("{} lost {} HP\n".format(enemy.name, best_weapon.damage))
+        print("{} lost {} HP\n".format(enemy.name, self.currentWpn.damage))
         time.sleep(1)
-        enemy.hp -= best_weapon.damage
+        enemy.hp -= self.currentWpn.damage
 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
@@ -104,7 +155,7 @@ class Player():
     def flee(self, tile):
         """Moves the player randomly"""
         available_moves = tile.adjacent_moves()
-        r=random.randint(0, len(available_moves)-1)#Added -1 which i think fixed fleeing crash index out of range
+        r = random.randint(0, len(available_moves) - 1)#Added -1 which i think fixed fleeing crash index out of range
         self.do_action(available_moves[r])
 
     #Needed to check for key when chestRoom reached

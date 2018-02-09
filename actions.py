@@ -19,8 +19,7 @@ class MoveNorth(Action):
 class MoveSouth(Action):
     def __init__(self):
         super().__init__(method=Player.move_south, name='Move south', hotkey='s')#dd
- 
- 
+
 class MoveEast(Action):
     def __init__(self):
         super().__init__(method=Player.move_east, name='Move east', hotkey='e')
@@ -30,11 +29,16 @@ class MoveWest(Action):
     def __init__(self):
         super().__init__(method=Player.move_west, name='Move west', hotkey='w')
  
- 
+
 class ViewInventory(Action):
     """Prints the player's inventory"""
     def __init__(self):
         super().__init__(method=Player.print_inventory, name='View inventory', hotkey='i')
+
+class Equip(Action):
+    """Prints the player's inventory"""
+    def __init__(self):
+        super().__init__(method=Player.equip, name='Equip', hotkey='l')
 
 class Attack(Action):
     def __init__(self, enemy):
