@@ -71,7 +71,7 @@ class Player():
                 #print(n, ".", item, '\n')
                 weapon_list.append(item)
         for weapon in weapon_list:
-            print(weapon_list.index(weapon),".", weapon.name.)
+            print(weapon_list.index(weapon),".", weapon.name)
         #print(len(weapon_list))
         self.chosenWpn = int(input("Select the weapon you want to equip: "))
         #while self.chosenWpn < 0 or self.chosenWpn > len(weapon_list):
