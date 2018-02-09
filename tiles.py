@@ -36,7 +36,6 @@ class MapTile:
         moves.append(actions.Equip())
         return moves
 
-
 class StartingRoom(MapTile):
     # override the intro_text method in the superclass
     def intro_text(self, player):
@@ -65,7 +64,7 @@ class LootRoom(MapTile):
     def modify_player(self, player):
         self.add_loot(player)
 
-class HealthRoom(MapTile):#Super to PotionRoom, ...
+class HealthRoom(MapTile):#Super to PotionRoom, ... maybe fountain room
     def __init__(self, x, y, health, beenThere):
         self.health = health
         self.beenThere = False
@@ -145,7 +144,8 @@ class EnemyRoom(MapTile):
             if the_player.hp < 0:#No negative hp
                 the_player.hp = 0
 
-            print("Enemy does {} damage. You have {} HP remaining\n".format(self.enemy.damage, the_player.hp))
+            print("Enemy does {} damage. You have {} HP remaining\n"
+                  .format(self.enemy.damage, the_player.hp))
  
     def available_actions(self):
         if self.enemy.is_alive():
@@ -259,7 +259,7 @@ class ChestRoom(LootRoom):
         if(player.checkInventory(self.key)):
             self.gotKey = True
             player.inventory.append(self.item)#Add item to player inventory
-            self.gotten = True;
+            self.gotBox = True;
             self.beenThere = True
  
     def modify_player(self, player):
