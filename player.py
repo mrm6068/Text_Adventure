@@ -15,7 +15,7 @@ class Player():
         self.money = 0
         self.nextLevelUp = 10
         self.chosenWpn = None
-        self.currentWpn = None
+        self.currentWpn = self.inventory[1]
  
     def hasVisited(self):
         if ([self.location_x, self.location_y]) in player.visitList:
@@ -108,12 +108,18 @@ class Player():
         #    if i.damage > max_dmg:
         #        max_dmg = i.damage
         #        best_weapon = i
-
+        #if self.currentWpn.minDamage > self.currentWpn.dmg:
+        #       self.currentWpn.dmg = i.minDamage
+        #       #best_weapon = i
+        #       self.currentWpn = i
+        
         print("\nYou use {} against {}\n".format(self.currentWpn.name, enemy.name))
+        r=random.randint(self.currentWpn.minDamage, self.currentWpn.maxDamage)
         time.sleep(1)
-        print("{} lost {} HP\n".format(enemy.name, self.currentWpn.damage))
+
+        print("{} lost {} HP\n".format(enemy.name, r))
         time.sleep(1)
-        enemy.hp -= self.currentWpn.damage
+        enemy.hp -= r
 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
