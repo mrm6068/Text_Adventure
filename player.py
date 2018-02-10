@@ -5,7 +5,7 @@ import time
  
 class Player():
     def __init__(self):
-        self.inventory = [items.Gold(15), items.Pillow(), items.Dagger()]
+        self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position
@@ -120,6 +120,19 @@ class Player():
         print("{} lost {} HP\n".format(enemy.name, r))
         time.sleep(1)
         enemy.hp -= r
+
+        if isinstance(self.currentWpn, items.Projectile):
+            self.currentWpn.ammo -= 1
+            if self.currentWpn.ammo > 0:
+                print("\n{} has {} shots left\n".format\
+                    (self.currentWpn.name, self.currentWpn.ammo))
+            else:
+                print("\n{} out of ammo, you toss it away.\n".format(self.currentWpn.name))
+                self.inventory.remove(self.currentWpn)
+                self.equip()
+                
+
+
 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))

@@ -267,7 +267,7 @@ class ChestRoom(LootRoom):
 
 class SkullChestRoom(ChestRoom):
     def __init__(self, x, y):
-        super().__init__(x, y, items.Dagger(), beenThere = False,\
+        super().__init__(x, y, items.Crossbow(), beenThere = False,\
                key = items.SkullKey(), gotBox = False, gotKey = False)
 
     def intro_text(self, player):

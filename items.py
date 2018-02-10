@@ -45,13 +45,21 @@ class Dagger(Weapon):
                          value=10,
                          minDamage=3,
                          maxDamage=5)
-class Crossbow(Weapon):
+
+class Projectile(Weapon):
+    def __init__(self, name, description, value, minDamage, maxDamage, ammo):
+        self.ammo = ammo
+        
+        super().__init__(name, description, value, minDamage, maxDamage)
+
+class Crossbow(Projectile):
     def __init__(self):
         super().__init__(name="Crossbow",
                          description="A wooden crossbow with 5 arrows",
                          value=30,
                          minDamage=7,
-                         maxDamage=13)
+                         maxDamage=13,
+                         ammo = 2)
 
 class Pillow(Weapon):
     def __init__(self):
