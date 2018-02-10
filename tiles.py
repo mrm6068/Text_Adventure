@@ -95,17 +95,17 @@ class PotionRoom(HealthRoom):
         else:
             self.beenThere = True
             print( """\n   /***\\""")
-            time.sleep(.8)
+            time.sleep(.5)
             print( """  /^^^^^\\""") 
-            time.sleep(.8)
+            time.sleep(.5)
             print( """ /       \\""")
-            time.sleep(.8)
+            time.sleep(.5)
             print( """< POTION  >""")
-            time.sleep(.8)
+            time.sleep(.5)
             print( """ \       /""")
-            time.sleep(.8)
+            time.sleep(.5)
             print( """  \     /""")
-            time.sleep(.8)
+            time.sleep(.5)
             print( """   \___/\n""")
             time.sleep(1)
             print('You found a bottle and you drink the purple potion.\n')
@@ -115,10 +115,18 @@ class PotionRoom(HealthRoom):
             print('You smash the bottle.')
             winsound.PlaySound(os.path.join(dirname, 'break_glass.WAV') , winsound.SND_FILENAME)
             time.sleep(1)
+            if (self.health + player.hp) > player.maxHp:
+                if (self.health + player.hp) - player.maxHp > 0:
+                    return """
+                    HP already full!
+                    """.format((self.health + player.hp) - player.maxHp)
 
-            return """
-                You gained 25 HP!
-                """
+                return """
+                    You gained {} HP!
+                    """.format((self.health + player.hp) - player.maxHp)
+                
+
+                    
 
 
 #class VendorRoom(LootRoom):

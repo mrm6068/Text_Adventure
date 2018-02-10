@@ -159,6 +159,7 @@ class Player():
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
+                
                 print("You've reached level {}!\n".format(self.level))
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))
@@ -167,6 +168,7 @@ class Player():
                 time.sleep(2)
                 print("Next level up at {} XP\n".format(self.nextLevelUp))
                 time.sleep(2)
+                self.checkLevelUp()#Recursively check for multiple level ups
 
     def do_action(self, action, **kwargs):
      action_method = getattr(self, action.method.__name__)
