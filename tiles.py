@@ -115,15 +115,19 @@ class PotionRoom(HealthRoom):
             print('You smash the bottle.')
             winsound.PlaySound(os.path.join(dirname, 'break_glass.WAV') , winsound.SND_FILENAME)
             time.sleep(1)
+
             if (self.health + player.hp) > player.maxHp:
-                if (self.health + player.hp) - player.maxHp > 0:
+                if (player.hp) >= player.maxHp:
                     return """
                     HP already full!
-                    """.format((self.health + player.hp) - player.maxHp)
-
+                    """
                 return """
                     You gained {} HP!
-                    """.format((self.health + player.hp) - player.maxHp)
+                    """.format(player.maxHp - (player.hp) )
+
+            return """
+                You gained 25 HP!
+                """
                 
 
                     
