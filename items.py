@@ -28,7 +28,8 @@ class Weapon(Item):
         super().__init__(name, description, value)
  
     def __str__(self):
-        return "{}\n=====\n{}\nValue: {}\nDamage: {}-{}".format(self.name, self.description, self.value, self.minDamage, self.maxDamage)
+        return "{}\n=====\n{}\nValue: {}\nDamage: {}-{}"\
+            .format(self.name, self.description, self.value, self.minDamage, self.maxDamage)
  
 class Rock(Weapon):
     def __init__(self):
@@ -52,14 +53,28 @@ class Projectile(Weapon):
         
         super().__init__(name, description, value, minDamage, maxDamage)
 
+    def __str__(self):
+        return "{}\n=====\n{}\nValue: {}\nDamage: {}-{}\nAmmo: {}"\
+            .format(self.name, self.description, self.value, self.minDamage,\
+           self.maxDamage, self.ammo)
+
 class Crossbow(Projectile):
     def __init__(self):
         super().__init__(name="Crossbow",
-                         description="A wooden crossbow with 5 arrows",
+                         description="A wooden crossbow",
                          value=30,
                          minDamage=7,
                          maxDamage=13,
                          ammo = 2)
+
+class Slingshot(Projectile):
+    def __init__(self):
+        super().__init__(name="Slingshot",
+                         description="A slingshot",
+                         value=20,
+                         minDamage=5,
+                         maxDamage=11,
+                         ammo = 4)
 
 class Pillow(Weapon):
     def __init__(self):

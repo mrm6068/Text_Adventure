@@ -1,6 +1,6 @@
 			LeaveCaveRoom	
 		EmptyCavePath	GiantSpiderRoom	
 		EmptyCavePath		
-		OgreRoom	EmptyCavePath	FindDaggerRoom
+		SkullKeyRoom	EmptyCavePath	FindDaggerRoom
 GiantSpiderRoom	HellhoundRoom	StartingRoom	EmptyCavePath	FindDaggerRoom
-		PotionRoom	SkullKeyRoom	SkullChestRoom
+		PotionRoom	OgreRoom	SkullChestRoom

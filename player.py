@@ -12,7 +12,7 @@ class Player():
         self.victory = False
         self.experience = 0
         self.level = 1
-        self.money = 0
+        self.money = 30
         self.nextLevelUp = 10
         self.chosenWpn = None
         self.currentWpn = self.inventory[1]
@@ -56,13 +56,13 @@ class Player():
     def print_inventory(self):
          print("This is what you have so far from your travels.")
          for item in self.inventory:
-             print(item, '\n')
+             print(item, '\n\n')
              #if not isinstance(item, items.Weapon):
              #   print(item, '\n')
-         print("Currently you brandish your trusty", self.currentWpn.name, "in your hands.")
+         print("\nCurrently you brandish your trusty", self.currentWpn.name, "in your hands.\n")
                 
     def equip(self):
-        print("These are the weapons you currently possess.")
+        print("\nThese are the weapons you currently possess.\n")
 
         weapon_list = []
         for item in self.inventory: 
@@ -73,15 +73,16 @@ class Player():
         for weapon in weapon_list:
             print(weapon_list.index(weapon),".", weapon.name)
         #print(len(weapon_list))
-        self.chosenWpn = int(input("Select the weapon you want to equip: "))
+        self.chosenWpn = int(input("\nSelect the weapon you want to equip: "))
         #while self.chosenWpn < 0 or self.chosenWpn > len(weapon_list):
         #    self.chosenWpn = int(input("Select the weapon you want to
         #    equip."))
         if self.chosenWpn >= 0 and self.chosenWpn < len(weapon_list):
-                print(weapon_list[self.chosenWpn].name, "equipped.")
+                print('\n')
+                print(weapon_list[self.chosenWpn].name, "equipped.\n")
                 self.currentWpn = weapon_list[self.chosenWpn]
         else:
-            print("Invalid weapon chosen.")
+            print("\nInvalid weapon chosen.\n")
 
     def move(self, dx, dy):
         self.location_x += dx
@@ -121,13 +122,15 @@ class Player():
         time.sleep(1)
         enemy.hp -= r
 
+
         if isinstance(self.currentWpn, items.Projectile):
             self.currentWpn.ammo -= 1
             if self.currentWpn.ammo > 0:
                 print("\n{} has {} shots left\n".format\
                     (self.currentWpn.name, self.currentWpn.ammo))
             else:
-                print("\n{} out of ammo, you toss it away.\n".format(self.currentWpn.name))
+                print("\n{} is out of ammo, you toss it away.\n".format(self.currentWpn.name))
+                print("\nSelect a new weapon.\n")
                 self.inventory.remove(self.currentWpn)
                 self.equip()
                 
@@ -160,7 +163,7 @@ class Player():
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))
                 time.sleep(2)
-                print("Total XP is {}\n".format(self.maxHp))
+                print("Total XP is {}\n".format(self.experience))
                 time.sleep(2)
                 print("Next level up at {} XP\n".format(self.nextLevelUp))
                 time.sleep(2)

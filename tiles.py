@@ -117,19 +117,38 @@ class PotionRoom(HealthRoom):
             time.sleep(1)
 
             return """
-                \nYou gained 25 HP!\n"""
+                You gained 25 HP!
+                """
 
 
-'''class VendorRoom(MapTile):
-    def __init__(self, x, y, item):
-        self.item = item
-        super().__init__(x, y)
+#class VendorRoom(LootRoom):
+#    def __init__(self, x, y, item):
+#        self.item = item
+#        super().__init__(x, y, item, beenThere = False)
  
-    def add_loot(self, player):
-        player.inventory.append(self.item)
+#    def add_loot(self, player):
+#        player.inventory.append(self.item)
+
+#    def take_money(self, player):
+#        player.money -= self.item.value
  
-    def modify_player(self, player):
-        self.add_loot(player)'''
+#    def modify_player(self, player):
+#        if player.money >= self.item.value:
+#            print("Would you like to buy the {}?".format(self.item))
+#            self.add_loot(player)
+#            player.money -= self.item.value
+#        else:
+#            print("You don't have enough money to buy the {}?".format(self.item))
+
+#class OldManVendorRoom(VendorRoom):
+#    def __init__(self, x, y):
+#        super().__init__(x, y, items.Slingshot)
+ 
+#    def intro_text(self, player):
+#        return """
+#        You find an old man with a slingshot to sell.
+#        """
+
 
 
 class EnemyRoom(MapTile):
