@@ -19,7 +19,10 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="arrow.wav" />
+    <Content Include="bear.wav" />
     <Content Include="map.txt" />
+    <Content Include="ogre1.wav" />
     <Content Include="UpgradeLog.htm" />
   </ItemGroup>
   <ItemGroup>

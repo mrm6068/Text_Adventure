@@ -216,12 +216,28 @@ class HellhoundRoom(EnemyRoom):
  
     def intro_text(self, player):
         if self.enemy.is_alive():
+            sounds.hellhound()
             return """
             A massive flaming dog growls angrily as you enter his lair.  
             """
         else:
             return """
             A Hellhound corpse.  How did I ever manage to kill that thing?
+            """
+
+class BearRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Bear())
+ 
+    def intro_text(self, player):
+        if self.enemy.is_alive():
+            sounds.bear()
+            return """
+            A gigantic grizzly bear wants to eat you for lunch.  
+            """
+        else:
+            return """
+            Here's that dead grizzly.
             """
 
 class OgreRoom(EnemyRoom):

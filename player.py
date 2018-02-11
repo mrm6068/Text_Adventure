@@ -74,9 +74,11 @@ class Player():
                 self.chosenWpn = int(input("\nSelect the weapon you want to equip: "))
             except ValueError:#Catch exception if input isn't int
                 print("\nInvalid weapon choice")
+                sounds.no()
                 continue#Restart loop
             if self.chosenWpn not in range(0,len(weapon_list)):
                 print("\nInvalid weapon choice")
+                sounds.no()
                 continue#Restart loop
             break#Passed validation break infinite loop
 

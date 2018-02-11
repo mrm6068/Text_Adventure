@@ -20,3 +20,7 @@ class Ogre(Enemy):
 class Hellhound(Enemy):
     def __init__(self):
         super().__init__(name="Hellhound", hp=20, damage=10, experience=20)
+
+class Bear(Enemy):
+    def __init__(self):
+        super().__init__(name="Bear", hp=25, damage=12, experience=30)

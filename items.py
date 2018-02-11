@@ -32,7 +32,7 @@ class Weapon(Item):
         return "{}\n=====\n{}\nValue: {}\nDamage: {}-{}"\
             .format(self.name, self.description, self.value, self.minDamage, self.maxDamage)
 
-    def sound(self):
+    def sound(self):#Each weapon CAN have it's own sound.
         pass
         
  
@@ -71,6 +71,8 @@ class Crossbow(Projectile):
                          minDamage=7,
                          maxDamage=13,
                          ammo = 2)
+    def sound(self):
+        sounds.arrow()
 
 class Revolver(Projectile):
     def __init__(self):

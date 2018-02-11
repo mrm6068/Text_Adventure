@@ -14,8 +14,8 @@ def breakGlass():
 def drink():
     winsound.PlaySound(os.path.join(dirname, 'drink_sound.WAV') , winsound.SND_FILENAME)
 
-def drink():
-    winsound.PlaySound(os.path.join(dirname, 'ogre.WAV') , winsound.SND_FILENAME)
+def ogre():
+    winsound.PlaySound(os.path.join(dirname, 'ogre1.WAV') , winsound.SND_FILENAME)
 
 def chestOpen():
     winsound.PlaySound(os.path.join(dirname, 'chest_open.WAV') , winsound.SND_FILENAME)
@@ -24,5 +24,16 @@ def levelUp():
     winsound.PlaySound(os.path.join(dirname, 'level_up.WAV') , winsound.SND_FILENAME)
 
 def gun():
-    winsound.PlaySound(os.path.join(dirname, 'gun1.WAV') , winsound.SND_FILENAME)
+    winsound.PlaySound(os.path.join(dirname, 'revolver.wav') , winsound.SND_FILENAME)
 
+def no():
+    winsound.PlaySound(os.path.join(dirname, 'no_dear.wav') , winsound.SND_FILENAME)
+
+def hellhound():
+    winsound.PlaySound(os.path.join(dirname, 'hellhound.wav') , winsound.SND_FILENAME)
+
+def bear():
+    winsound.PlaySound(os.path.join(dirname, 'bear.wav') , winsound.SND_FILENAME)
+
+def arrow():
+    winsound.PlaySound(os.path.join(dirname, 'arrow.wav') , winsound.SND_FILENAME)
