@@ -1,8 +1,5 @@
-﻿import items
-import world
-import random
-import time
- 
+﻿import items, sounds, world, random, time
+
 class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow()]
@@ -159,6 +156,7 @@ class Player():
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
+                sounds.levelUp()
                 print("You've reached level {}!\n".format(self.level))
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))

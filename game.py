@@ -1,4 +1,4 @@
-import world, time, tiles, winsound, os
+import world, time, tiles, sounds
 from player import Player
 #Git Test
 #Git test 2
@@ -23,7 +23,7 @@ def play():
                     player.do_action(action, **action.kwargs)
                     break
     if player.is_alive() == False:
-        winsound.PlaySound(os.path.join(tiles.dirname, 'die.WAV') , winsound.SND_FILENAME)
+        sounds.die()
         print("You died.")
 
 

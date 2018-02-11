@@ -27,6 +27,9 @@
     <Compile Include="enemies.py" />
     <Compile Include="game.py" />
     <Compile Include="items.py" />
+    <Compile Include="sounds.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="player.py" />
     <Compile Include="tiles.py" />
     <Compile Include="world.py" />

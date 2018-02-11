@@ -1,4 +1,4 @@
-import items, enemies, actions, world, random, winsound, os
+import items, enemies, actions, world, random, sounds
 from player import Player
 import time
 
@@ -57,7 +57,7 @@ class LootRoom(MapTile):
  
     def add_loot(self, player):
         if(self.beenThere == False):#If you have not been here...  
-            winsound.PlaySound(os.path.join(dirname, 'good.WAV') , winsound.SND_FILENAME)
+            sounds.good()
             player.inventory.append(self.item)#Add item to player inventory
             self.beenThere = True
  
@@ -110,10 +110,10 @@ class PotionRoom(HealthRoom):
             time.sleep(1)
             print('You found a bottle and you drink the purple potion.\n')
             #Uses relative file path so it works on different systems.
-            winsound.PlaySound(os.path.join(dirname, 'drink_sound.WAV') , winsound.SND_FILENAME)
+            sounds.drink()
             time.sleep(1)
             print('You smash the bottle.')
-            winsound.PlaySound(os.path.join(dirname, 'break_glass.WAV') , winsound.SND_FILENAME)
+            sounds.breakGlass()
             time.sleep(1)
 
             if (self.health + player.hp) > player.maxHp:
@@ -232,7 +232,7 @@ class OgreRoom(EnemyRoom):
  
     def intro_text(self, player):
         if self.enemy.is_alive():
-            winsound.PlaySound(os.path.join(dirname, 'ogre.WAV') , winsound.SND_FILENAME)
+            sounds.ogre()
             return """
             Oh shit an ogre.  
             """
@@ -312,7 +312,7 @@ class SkullChestRoom(ChestRoom):
             You see the empty chest where you found the {}
             """.format(self.item)
         elif self.gotKey and not self.gotBox:
-            winsound.PlaySound(os.path.join(dirname, 'chest_open.WAV') , winsound.SND_FILENAME)
+            sounds.chestOpen()
             self.gotBox = True
             return """
                     You see a chest with a skull keyhole.
