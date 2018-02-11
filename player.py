@@ -2,7 +2,8 @@
 
 class Player():
     def __init__(self):
-        self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow()]
+        self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow(),\
+            items.Revolver()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position
@@ -72,10 +73,10 @@ class Player():
             try:
                 self.chosenWpn = int(input("\nSelect the weapon you want to equip: "))
             except ValueError:#Catch exception if input isn't int
-                print("\nInvalid input")
+                print("\nInvalid weapon choice")
                 continue#Restart loop
             if self.chosenWpn not in range(0,len(weapon_list)):
-                print("\nInvalid input")
+                print("\nInvalid weapon choice")
                 continue#Restart loop
             break#Passed validation break infinite loop
 
@@ -103,18 +104,9 @@ class Player():
         self.move(dx=-1, dy=0)
 
     def attack(self, enemy):
-        #best_weapon = None
-        #max_dmg = 0
-        #for i in self.inventory:#Loops through inventory to find best weapon.
-        # if isinstance(i, items.Weapon):
-        #    if i.damage > max_dmg:
-        #        max_dmg = i.damage
-        #        best_weapon = i
-        #if self.currentWpn.minDamage > self.currentWpn.dmg:
-        #       self.currentWpn.dmg = i.minDamage
-        #       #best_weapon = i
-        #       self.currentWpn = i
-        
+    
+        self.currentWpn.sound()
+
         print("\nYou use {} against {}\n".format(self.currentWpn.name, enemy.name))
         r=random.randint(self.currentWpn.minDamage, self.currentWpn.maxDamage)
         time.sleep(1)
@@ -160,8 +152,8 @@ class Player():
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.10)#Max HP increases 10% per level
-                sounds.levelUp()
                 print("You've reached level {}!\n".format(self.level))
+                sounds.levelUp()
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))
                 time.sleep(2)

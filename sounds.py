@@ -23,3 +23,6 @@ def chestOpen():
 def levelUp():
     winsound.PlaySound(os.path.join(dirname, 'level_up.WAV') , winsound.SND_FILENAME)
 
+def gun():
+    winsound.PlaySound(os.path.join(dirname, 'gun1.WAV') , winsound.SND_FILENAME)
+

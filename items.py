@@ -1,4 +1,5 @@
-﻿# Base class for all items
+﻿import sounds
+# Base class for all items
 class Item():
     # __init__ is the contructor method
     def __init__(self, name, description, value):
@@ -30,6 +31,10 @@ class Weapon(Item):
     def __str__(self):
         return "{}\n=====\n{}\nValue: {}\nDamage: {}-{}"\
             .format(self.name, self.description, self.value, self.minDamage, self.maxDamage)
+
+    def sound(self):
+        pass
+        
  
 class Rock(Weapon):
     def __init__(self):
@@ -66,6 +71,17 @@ class Crossbow(Projectile):
                          minDamage=7,
                          maxDamage=13,
                          ammo = 2)
+
+class Revolver(Projectile):
+    def __init__(self):
+        super().__init__(name="Revolver",
+                         description="A 5-shot revolver",
+                         value=30,
+                         minDamage=14,
+                         maxDamage=21,
+                         ammo = 5)
+    def sound(self):
+        sounds.gun()
 
 class Slingshot(Projectile):
     def __init__(self):
