@@ -122,7 +122,7 @@ class Player():
         time.sleep(1)
         enemy.hp -= r
 
-
+        #Check if weapon is projectile to subtract 1 ammo each attack
         if isinstance(self.currentWpn, items.Projectile):
             self.currentWpn.ammo -= 1
             if self.currentWpn.ammo > 0:

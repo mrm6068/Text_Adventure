@@ -81,8 +81,8 @@ class Pillow(Weapon):
         super().__init__(name="Pillow",
                          description="A pillow for handling my soft work.",
                          value=1,
-                         minDamage=3,
-                         maxDamage=5)
+                         minDamage=1,
+                         maxDamage=3)
 
 class SkullKey(Item):
     # __init__ is the contructor method
