@@ -51,7 +51,7 @@ class Player():
                               
 
     def print_inventory(self):
-         print("This is what you have so far from your travels.")
+         print("This is what you have so far from your travels.\n")
          for item in self.inventory:
              print(item, '\n\n')
              #if not isinstance(item, items.Weapon):
@@ -63,23 +63,27 @@ class Player():
 
         weapon_list = []
         for item in self.inventory: 
-            if isinstance(item, items.Weapon):
-                #n+=1
-                #print(n, ".", item, '\n')
-                weapon_list.append(item)
+            if isinstance(item, items.Weapon):#If item is weapon...
+                weapon_list.append(item)#Add it to weapon_list
         for weapon in weapon_list:
             print(weapon_list.index(weapon),".", weapon.name)
-        #print(len(weapon_list))
-        self.chosenWpn = int(input("\nSelect the weapon you want to equip: "))
-        #while self.chosenWpn < 0 or self.chosenWpn > len(weapon_list):
-        #    self.chosenWpn = int(input("Select the weapon you want to
-        #    equip."))
-        if self.chosenWpn >= 0 and self.chosenWpn < len(weapon_list):
-                print('\n')
-                print(weapon_list[self.chosenWpn].name, "equipped.\n")
-                self.currentWpn = weapon_list[self.chosenWpn]
-        else:
-            print("\nInvalid weapon chosen.\n")
+        #input validation to get int from user in proper range
+        while True:
+            try:
+                self.chosenWpn = int(input("\nSelect the weapon you want to equip: "))
+            except ValueError:#Catch exception if input isn't int
+                print("\nInvalid input")
+                continue#Restart loop
+            if self.chosenWpn not in range(0,len(weapon_list)):
+                print("\nInvalid input")
+                continue#Restart loop
+            break#Passed validation break infinite loop
+
+        print('\n')
+        print(weapon_list[self.chosenWpn].name, "equipped.\n")
+        self.currentWpn = weapon_list[self.chosenWpn]
+        #else:
+            #print("\nInvalid weapon chosen.\n")
 
     def move(self, dx, dy):
         self.location_x += dx

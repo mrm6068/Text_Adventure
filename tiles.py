@@ -1,8 +1,6 @@
 import items, enemies, actions, world, random, sounds
 from player import Player
 import time
-
-dirname = os.path.dirname(__file__)#For relative file path for sounds
  
 class MapTile:
     def __init__(self, x, y):
