@@ -1,4 +1,6 @@
 			LeaveCaveRoom	
+			OgreRoom	
+			LeaveCaveRoomEntrance	
 		EmptyCavePath	GiantSpiderRoom	
 		EmptyCavePath		
 		SkullKeyRoom	EmptyCavePath	BearRoom

@@ -423,3 +423,48 @@ class LeaveCaveRoom(MapTile):
  
     def modify_player(self, player):
         player.victory = True
+
+class LeaveCaveRoomEntrance(ChestRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Crossbow(), beenThere = False,\
+               key = items.FinalKey(), gotBox = False, gotKey = False)
+
+    def available_actions(self):
+        """Returns all of the available actions in this room."""
+        
+        moves = [actions.MoveSouth()]#Can always go back south
+        if self.gotBox: # Door unlocked
+            moves.append(actions.MoveNorth())#North to boss
+
+        moves.append(actions.ViewInventory())
+        moves.append(actions.Equip())
+        
+
+        return moves
+
+    def modify_player(self, player):
+        self.beenThere = True
+        self.gotKey = player.checkInventory(self.key)
+        if self.gotKey:
+            self.gotBox = True#Door unlocked
+
+    def intro_text(self, player):
+        self.gotBox = player.checkInventory(self.key)
+        if self.gotBox:
+            if self.beenThere:
+                return """
+                        Do you dare enter the unlocked door?
+                        """
+            sounds.chestOpen()#Will be door open
+            self.gotBox = True#Door unlocked
+            return """
+                    You unlocked the metal door to travel northward.
+                    Something seems off.
+                    Continue at your own risk.
+
+                    """
+        else: 
+            return"""
+                There is a thick metal door, must be guarding something.
+                There is a keyhole.
+                """

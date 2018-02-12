@@ -3,7 +3,7 @@
 class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow(),\
-            items.Revolver()]
+            items.Revolver(), items.FinalKey()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position
@@ -59,6 +59,7 @@ class Player():
              #   print(item, '\n')
          print("\nCurrently you brandish your trusty", self.currentWpn.name, "in your hands.\n")
                 
+
     def equip(self):
         print("\nThese are the weapons you currently possess.\n")
 

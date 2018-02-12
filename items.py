@@ -97,7 +97,7 @@ class Slingshot(Projectile):
 class Pillow(Weapon):
     def __init__(self):
         super().__init__(name="Pillow",
-                         description="A pillow for handling my soft work.",
+                         description="A pillow for handling my soft work",
                          value=1,
                          minDamage=1,
                          maxDamage=3)
@@ -107,4 +107,11 @@ class SkullKey(Item):
     def __init__(self): 
         super().__init__(name="Skull Key",
                          description="An old key shaped like a skull",
+                         value=5)
+
+class FinalKey(Item):
+    # __init__ is the contructor method
+    def __init__(self): 
+        super().__init__(name="Final Key",
+                         description="The last key you will ever need",
                          value=5)
