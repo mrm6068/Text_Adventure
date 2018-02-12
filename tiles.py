@@ -107,7 +107,6 @@ class PotionRoom(HealthRoom):
             print( """   \___/\n""")
             time.sleep(1)
             print('You found a bottle and you drink the purple potion.\n')
-            #Uses relative file path so it works on different systems.
             sounds.drink()
             time.sleep(1)
             print('You smash the bottle.')
@@ -168,13 +167,15 @@ class EnemyRoom(MapTile):
  
     def modify_player(self, the_player):
         if self.enemy.is_alive():
-            the_player.hp = the_player.hp - self.enemy.damage
+            #r makes enemy take off between 75% and 125% of damage.
+            r=random.randint(int(self.enemy.damage *.75), int(self.enemy.damage*1.25))
+            the_player.hp = the_player.hp - r
 
             if the_player.hp < 0:#No negative hp
                 the_player.hp = 0
 
             print("Enemy does {} damage. You have {} HP remaining\n"
-                  .format(self.enemy.damage, the_player.hp))
+                  .format(r, the_player.hp))
  
     def available_actions(self):
         if self.enemy.is_alive():
@@ -339,20 +340,20 @@ class SkullChestRoom(ChestRoom):
             It's locked.
             """
 
-class KeyRoom(LootRoom):
-    def __init__(self, x, y, item, key, beenThere):
-        self.item = item
-        self.key = key;
-        self.beenThere = False
-        super().__init__(x, y)
+#class KeyRoom(LootRoom):
+#    def __init__(self, x, y, item, key, beenThere):
+#        self.item = item
+#        self.key = key;
+#        self.beenThere = False
+#        super().__init__(x, y)
  
-    def add_loot(self, player):
-        if(self.beenThere):#If you have not been here...  
-            player.inventory.append(self.item)#Add item to player inventory
-            self.beenThere = True
+#    def add_loot(self, player):
+#        if(self.beenThere):#If you have not been here...  
+#            player.inventory.append(self.item)#Add item to player inventory
+#            self.beenThere = True
  
-    def modify_player(self, player):
-        self.add_loot(player)
+#    def modify_player(self, player):
+#        self.add_loot(player)
 
 class SkullKeyRoom(LootRoom):
     def __init__(self, x, y):

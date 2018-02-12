@@ -129,9 +129,6 @@ class Player():
                 self.inventory.remove(self.currentWpn)
                 self.equip()
                 
-
-
-
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
             time.sleep(2)
