@@ -23,6 +23,7 @@
     <Content Include="bear.wav" />
     <Content Include="map.txt" />
     <Content Include="ogre1.wav" />
+    <Content Include="rat_humanoid.wav" />
     <Content Include="UpgradeLog.htm" />
   </ItemGroup>
   <ItemGroup>
