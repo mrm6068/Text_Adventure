@@ -130,33 +130,74 @@ class PotionRoom(HealthRoom):
                     
 
 
-#class VendorRoom(LootRoom):
-#    def __init__(self, x, y, item):
-#        self.item = item
-#        super().__init__(x, y, item, beenThere = False)
+class VendorRoom(LootRoom):
+    def __init__(self, x, y, item):
+        self.item = item
+        super().__init__(x, y, item, beenThere = False)
  
-#    def add_loot(self, player):
-#        player.inventory.append(self.item)
+    def add_loot(self, player):
+        player.inventory.append(self.item)
 
-#    def take_money(self, player):
-#        player.money -= self.item.value
- 
-#    def modify_player(self, player):
-#        if player.money >= self.item.value:
-#            print("Would you like to buy the {}?".format(self.item))
-#            self.add_loot(player)
-#            player.money -= self.item.value
-#        else:
-#            print("You don't have enough money to buy the {}?".format(self.item))
+    def take_loot(self, player, itemIndex):
+        del player.inventory[itemIndex]
 
-#class OldManVendorRoom(VendorRoom):
-#    def __init__(self, x, y):
-#        super().__init__(x, y, items.Slingshot)
+    def take_money(self, player):
+        player.money -= self.item.value
+
+    def add_money(self, player, itemIndex):
+        player.money += player.inventory[itemIndex].value
  
-#    def intro_text(self, player):
-#        return """
-#        You find an old man with a slingshot to sell.
-#        """
+    def modify_player(self, player):
+
+        sell = input("\nDo you have any items you would like to sell?(y/n): ")
+
+        if sell == "y" or sell == "Y":
+            for item in player.inventory: 
+                print(player.inventory.index(item),".", item.name)
+            print(len(player.inventory),".", "Nevermind")
+      
+            while True:
+                try:
+                    itemChoice = int(input("\nSelect the item you would like to sell: "))
+                except ValueError:#Catch exception if input isn't int
+                    print("\nInvalid item choice")
+                    sounds.no()
+                    continue#Restart loop
+                if itemChoice not in range(0,len(player.inventory)+1):#+1 for nevermind choice
+                    print("\nInvalid item choice")
+                    sounds.no()
+                    continue#Restart loop
+                break#Passed validation break infinite loop
+
+            if itemChoice == len(player.inventory):
+                print("\nThanks anyway\n")
+                return#Nevermind was selected
+            else:
+                print("\nYou sold {} for {} moneys\n".format(player.inventory[itemChoice].name\
+                    , player.inventory[itemChoice].value))
+
+                self.add_money(player, itemChoice)
+                self.take_loot(player, itemChoice)
+
+                print("\nYou have {} moneys\n".format(player.money))
+        else:
+            print("\nThanks anyway\n")
+
+        #if player.money >= self.item.value:
+        #    print("Would you like to buy the {}?".format(self.item))
+        #    self.add_loot(player)
+        #    player.money -= self.item.value
+        #else:
+        #    print("You don't have enough money to buy the {}?".format(self.item))
+
+class OldManVendorRoom(VendorRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Slingshot)
+ 
+    def intro_text(self, player):
+        return """
+        You find an old man looking to purchase some items.
+        """
 
 
 
