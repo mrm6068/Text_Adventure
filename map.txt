@@ -1,8 +1,8 @@
 			LeaveCaveRoom	
-			OgreRoom	
+			BearRoom	
 			LeaveCaveRoomEntrance	
 		EmptyCavePath	GiantSpiderRoom	
 		EmptyCavePath		
-		SkullKeyRoom	EmptyCavePath	BearRoom
+		SkullKeyRoom	EmptyCavePath	OgreRoom
 GiantSpiderRoom	HellhoundRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
 		PotionRoom	OgreRoom	SkullChestRoom

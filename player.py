@@ -1,4 +1,4 @@
-﻿import items, sounds, world, random, time
+﻿import items, sounds, world, random, time, tiles, actions
 
 class Player():
     def __init__(self):
@@ -172,7 +172,10 @@ class Player():
     def flee(self, tile):
         """Moves the player randomly"""
         available_moves = tile.adjacent_moves()
-        r = random.randint(0, len(available_moves) - 1)#Added -1 which i think fixed fleeing crash index out of range
+        if isinstance(tile, tiles.BearRoom):#Will change to rat humanoid room
+            del available_moves[0]#Can't flee north from final boss
+
+        r = random.randint(0, len(available_moves)-1)#Added -1 which i think fixed fleeing crash index out of range
         self.do_action(available_moves[r])
 
     #Needed to check for key when chestRoom reached

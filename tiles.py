@@ -7,7 +7,7 @@ class MapTile:
         self.x = x
         self.y = y
 
-    #Added player because player inventory effects some entry text
+    #Added player because player inventory affects some entry text
     def intro_text(self, player):
         raise NotImplementedError()
  
