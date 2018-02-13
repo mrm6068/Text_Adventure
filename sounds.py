@@ -37,3 +37,9 @@ def bear():
 
 def arrow():
     winsound.PlaySound(os.path.join(dirname, 'arrow.wav') , winsound.SND_FILENAME)
+
+def moltov():
+    winsound.PlaySound(os.path.join(dirname, 'moltov.wav') , winsound.SND_FILENAME)
+
+def ratHumanoid():
+    winsound.PlaySound(os.path.join(dirname, 'rat_humanoid.wav') , winsound.SND_FILENAME)

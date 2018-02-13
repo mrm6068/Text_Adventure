@@ -3,7 +3,7 @@
 class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow(),\
-            items.Revolver(), items.FinalKey()]
+            items.Revolver(), items.FinalKey(), items.Moltov()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position
@@ -125,7 +125,9 @@ class Player():
                 print("\n{} has {} shots left\n".format\
                     (self.currentWpn.name, self.currentWpn.ammo))
             else:
-                print("\n{} is out of ammo, you toss it away.\n".format(self.currentWpn.name))
+                #Don't print out of ammo for Moltov
+                if not isinstance(self.currentWpn, items.Moltov):
+                    print("\n{} is out of ammo, you toss it away.\n".format(self.currentWpn.name))
                 print("\nSelect a new weapon.\n")
                 self.inventory.remove(self.currentWpn)
                 self.equip()
@@ -152,9 +154,9 @@ class Player():
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.20)#Max HP increases 20% per level
-                print("\n* * * * * * * * * * *\n")
+                print("\n\n* * * * * * * * * * *\n")
                 print("You've reached level {}!".format(self.level))
-                print("\n* * * * * * * * * * *\n")
+                print("\n* * * * * * * * * * *\n\n")
                 sounds.levelUp()
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))

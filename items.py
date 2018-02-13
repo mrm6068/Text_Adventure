@@ -74,6 +74,17 @@ class Crossbow(Projectile):
     def sound(self):
         sounds.arrow()
 
+class Moltov(Projectile):
+    def __init__(self):
+        super().__init__(name="Moltov cocktail",
+                         description="One moltov cocktail, use it wisely",
+                         value=20,
+                         minDamage=25,
+                         maxDamage=40,
+                         ammo = 1)
+    def sound(self):
+        sounds.moltov()
+
 class Revolver(Projectile):
     def __init__(self):
         super().__init__(name="Revolver",
