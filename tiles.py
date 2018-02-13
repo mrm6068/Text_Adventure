@@ -381,6 +381,35 @@ class SkullChestRoom(ChestRoom):
             It's locked.
             """
 
+class BlueChestRoom(ChestRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Moltov(), beenThere = False,\
+               key = items.BlueKey(), gotBox = False, gotKey = False)
+
+    def intro_text(self, player):
+        self.gotKey = player.checkInventory(self.key)
+        if self.beenThere and not self.gotBox:
+            return """
+            The blue chest is still locked.
+            """
+        elif self.beenThere and self.gotBox:
+            return """
+            You see the empty blue chest where you found the {}
+            """.format(self.item)
+        elif self.gotKey and not self.gotBox:
+            sounds.chestOpen()
+            self.gotBox = True
+            return """
+                    You see a blue chest.
+                    You use the blue key and open the chest.
+                    You obtained a {}.
+                    """.format(self.item) 
+        else: 
+            return"""
+            You find a blue chest, the keyhole is shaped like a skull.
+            It's locked, maybe you need a blue key.
+            """
+
 #class KeyRoom(LootRoom):
 #    def __init__(self, x, y, item, key, beenThere):
 #        self.item = item
@@ -408,6 +437,20 @@ class SkullKeyRoom(LootRoom):
         else:
             return"""
             You find a key shaped like a skull
+            """
+
+class BlueKeyRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.BlueKey(), beenThere = False)
+
+    def intro_text(self, player):
+        if self.beenThere:
+            return """
+            your in the room where you found the blue key
+            """
+        else:
+            return"""
+            You find a blue key
             """
 
            

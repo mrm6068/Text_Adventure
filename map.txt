@@ -5,4 +5,5 @@
 		EmptyCavePath		
 		SkullKeyRoom	EmptyCavePath	OgreRoom
 GiantSpiderRoom	HellhoundRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
+		BlueKeyRoom	EmptyCavePath	BlueChestRoom
 		PotionRoom	OgreRoom	SkullChestRoom

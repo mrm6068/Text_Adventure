@@ -120,6 +120,13 @@ class SkullKey(Item):
                          description="An old key shaped like a skull",
                          value=5)
 
+class BlueKey(Item):
+    # __init__ is the contructor method
+    def __init__(self): 
+        super().__init__(name="Blue Key",
+                         description="A blue key",
+                         value=5)
+
 class FinalKey(Item):
     # __init__ is the contructor method
     def __init__(self): 
