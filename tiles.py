@@ -150,10 +150,11 @@ class VendorRoom(LootRoom):
     def modify_player(self, player):
 
         sell = input("\nDo you have any items you would like to sell?(y/n): ")
+        print("")
 
         if sell == "y" or sell == "Y":
             for item in player.inventory: 
-                print(player.inventory.index(item),".", item.name)
+                print(player.inventory.index(item),".", item.name + " - $" + str(item.value));
             print(len(player.inventory),".", "Nevermind")
       
             while True:
@@ -280,6 +281,21 @@ class BearRoom(EnemyRoom):
         else:
             return """
             Here's that dead grizzly.
+            """
+
+class RatHumanoidRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.RatHumanoid())
+ 
+    def intro_text(self, player):
+        if self.enemy.is_alive():
+            sounds.ratHumanoid()
+            return """
+            A Rat Humanoid, oh my!.  
+            """
+        else:
+            return """
+            Here's the slain rat man.
             """
 
 class OgreRoom(EnemyRoom):

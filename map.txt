@@ -3,7 +3,7 @@
 			LeaveCaveRoomEntrance	
 		EmptyCavePath	GiantSpiderRoom	
 		EmptyCavePath		
-		SkullKeyRoom	EmptyCavePath	OgreRoom
+		SkullKeyRoom	RatHumanoidRoom	OgreRoom
 GiantSpiderRoom	HellhoundRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
 		BlueKeyRoom	EmptyCavePath	BlueChestRoom
 		PotionRoom	OgreRoom	SkullChestRoom

@@ -24,3 +24,7 @@ class Hellhound(Enemy):
 class Bear(Enemy):
     def __init__(self):
         super().__init__(name="Bear", hp=25, damage=12, experience=30)
+
+class RatHumanoid(Enemy):
+    def __init__(self):
+        super().__init__(name="Rat Humanoid", hp=200, damage=20, experience=1000)
