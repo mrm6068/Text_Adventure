@@ -1,4 +1,4 @@
-﻿import items, sounds, world, random, time, tiles, actions
+﻿import items, sounds, world, random, time, tiles, actions, util
 
 class Player():
     def __init__(self):
@@ -71,13 +71,11 @@ class Player():
             print(weapon_list.index(weapon),".", weapon.name)
         #input validation to get int from user in proper range
         while True:
-            try:
-                self.chosenWpn = int(input("\nSelect the weapon you want to equip: "))
-            except ValueError:#Catch exception if input isn't int
-                print("\nInvalid weapon choice")
-                sounds.no()
-                continue#Restart loop
-            if self.chosenWpn not in range(0,len(weapon_list)):
+            print("\nSelect the weapon you want to equip: ")
+
+            itemChoice = util.getIntInput()
+
+            if itemChoice not in range(0,len(weapon_list)):
                 print("\nInvalid weapon choice")
                 sounds.no()
                 continue#Restart loop
@@ -85,7 +83,7 @@ class Player():
 
         print('\n')
         print(weapon_list[self.chosenWpn].name, "equipped.\n")
-        self.currentWpn = weapon_list[self.chosenWpn]
+        self.currentWpn = weapon_list[itemChoice]
         #else:
             #print("\nInvalid weapon chosen.\n")
 

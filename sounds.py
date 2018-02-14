@@ -2,6 +2,9 @@ import winsound, os
 
 dirname = os.path.dirname(__file__)#For relative file path for sounds
 
+filename = os.path.join(dirname, '/sounds')
+dirname = filename
+
 def good():
     winsound.PlaySound(os.path.join(dirname, 'good.WAV') , winsound.SND_FILENAME)
 

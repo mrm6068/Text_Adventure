@@ -1,4 +1,4 @@
-import items, enemies, actions, world, random, sounds, module1
+import items, enemies, actions, world, random, sounds, util
 from player import Player
 import time
  
