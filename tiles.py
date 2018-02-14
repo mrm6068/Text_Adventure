@@ -1,4 +1,4 @@
-import items, enemies, actions, world, random, sounds
+import items, enemies, actions, world, random, sounds, module1
 from player import Player
 import time
  
@@ -163,6 +163,7 @@ class VendorRoom(LootRoom):
                 except ValueError:#Catch exception if input isn't int
                     print("\nInvalid item choice")
                     sounds.no()
+                    module1.getIntInput()
                     continue#Restart loop
                 if itemChoice not in range(0,len(player.inventory)+1):#+1 for nevermind choice
                     print("\nInvalid item choice")
