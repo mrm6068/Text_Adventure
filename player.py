@@ -181,7 +181,7 @@ class Player():
     def flee(self, tile):
         """Moves the player randomly"""
         available_moves = tile.adjacent_moves()
-        if isinstance(tile, tiles.BearRoom):#Will change to rat humanoid room
+        if isinstance(tile, tiles.RatHumanoidRoom):
             del available_moves[0]#Can't flee north from final boss
 
         r = random.randint(0, len(available_moves)-1)#Added -1 which i think fixed fleeing crash index out of range

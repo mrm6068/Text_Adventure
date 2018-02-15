@@ -63,20 +63,22 @@ class LootRoom(MapTile):
         self.add_loot(player)
 
 class HealthRoom(MapTile):#Super to PotionRoom, ... maybe fountain room
-    def __init__(self, x, y, health, beenThere):
+    def __init__(self, x, y, health, beenThere = False):
         self.health = health
         self.beenThere = False
         super().__init__(x, y)
  
     def add_hp(self, player):
-        #Add room's health to player health.
-        player.hp += self.health
-        #hp can't be higher than max hp.
-        if player.hp > player.maxHp:
-            player.hp = player.maxHp
-        time.sleep(1)
-        print("HP is {}\n".format(player.hp))
-        time.sleep(1)
+        if not self.beenThere:
+            self.beenThere = True
+            #Add room's health to player health.
+            player.hp += self.health
+            #hp can't be higher than max hp.
+            if player.hp > player.maxHp:
+                player.hp = player.maxHp
+            time.sleep(1)
+            print("HP is {}\n".format(player.hp))
+            time.sleep(1)
  
     def modify_player(self, player):
         self.add_hp(player)
@@ -91,27 +93,7 @@ class PotionRoom(HealthRoom):
                     \nThis is the room you found the potion.\n"
               
         else:
-            self.beenThere = True
-            print( """\n   /***\\""")
-            time.sleep(.5)
-            print( """  /^^^^^\\""") 
-            time.sleep(.5)
-            print( """ /       \\""")
-            time.sleep(.5)
-            print( """< POTION  >""")
-            time.sleep(.5)
-            print( """ \       /""")
-            time.sleep(.5)
-            print( """  \     /""")
-            time.sleep(.5)
-            print( """   \___/\n""")
-            time.sleep(1)
-            print('You found a bottle and you drink the purple potion.\n')
-            sounds.drink()
-            time.sleep(1)
-            print('You smash the bottle.')
-            sounds.breakGlass()
-            time.sleep(1)
+            util.potionGraphics()
 
             if (self.health + player.hp) > player.maxHp:
                 if (player.hp) >= player.maxHp:
@@ -323,22 +305,7 @@ class FindDaggerRoom(LootRoom):
             This is where you found a dagger!
             """
         else:
-            print( """\n    /\\""")
-            time.sleep(.7)
-            print( """   |  |""") 
-            time.sleep(.7)
-            print( """   |  |""")
-            time.sleep(.7)
-            print( """   |  |""")
-            time.sleep(.7)
-            print( """ __|  |__""")
-            time.sleep(.7)
-            print( """|___   __|""")
-            time.sleep(.7)
-            print( """    | |""")
-            time.sleep(.7)
-            print( """    ---""")
-            time.sleep(.7)
+            util.DagRoomGraphic()
 
             return """
             Your notice something shiny in the corner.

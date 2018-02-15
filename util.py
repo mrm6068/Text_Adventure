@@ -1,4 +1,4 @@
-import sounds
+import sounds, time
 
 def getIntInput(sInput):
 
@@ -12,5 +12,44 @@ def getIntInput(sInput):
             continue#Restart loop
         return itemChoice
 
+def dagRoomGraphic():
 
+    print( """\n    /\\""")
+    time.sleep(.7)
+    print( """   |  |""") 
+    time.sleep(.7)
+    print( """   |  |""")
+    time.sleep(.7)
+    print( """   |  |""")
+    time.sleep(.7)
+    print( """ __|  |__""")
+    time.sleep(.7)
+    print( """|___   __|""")
+    time.sleep(.7)
+    print( """    | |""")
+    time.sleep(.7)
+    print( """    ---""")
+    time.sleep(.7)
 
+  
+def potionGraphics():
+    print( """\n   /***\\""")
+    time.sleep(.5)
+    print( """  /^^^^^\\""") 
+    time.sleep(.5)
+    print( """ /       \\""")
+    time.sleep(.5)
+    print( """< POTION  >""")
+    time.sleep(.5)
+    print( """ \       /""")
+    time.sleep(.5)
+    print( """  \     /""")
+    time.sleep(.5)
+    print( """   \___/\n""")
+    time.sleep(1)
+    print('You found a bottle and you drink the purple potion.\n')
+    sounds.drink()
+    time.sleep(1)
+    print('You smash the bottle.')
+    sounds.breakGlass()
+    time.sleep(1)
