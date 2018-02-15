@@ -383,7 +383,7 @@ class FindDaggerRoom(LootRoom):
             This is where you found a dagger!
             """
         else:
-            util.DagRoomGraphic()
+            util.dagRoomGraphic()
 
             return """
             Your notice something shiny in the corner.

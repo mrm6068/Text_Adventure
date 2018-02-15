@@ -19,13 +19,44 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="arrow.wav" />
     <Content Include="bear.wav" />
     <Content Include="map.txt" />
     <Content Include="moltov.wav" />
     <Content Include="ogre1.wav" />
     <Content Include="rat_humanoid.wav" />
+    <Content Include="Sounds\arrow.wav" />
+    <Content Include="Sounds\bear.wav" />
+    <Content Include="Sounds\break_glass.wav" />
+    <Content Include="Sounds\chest_open.wav" />
+    <Content Include="Sounds\die.wav" />
+    <Content Include="Sounds\drink_sound.wav" />
+    <Content Include="Sounds\good.wav" />
+    <Content Include="Sounds\gun.wav" />
+    <Content Include="Sounds\gun1.wav" />
+    <Content Include="Sounds\gun2.wav" />
+    <Content Include="Sounds\hellhound.wav" />
+    <Content Include="Sounds\level_up.wav" />
+    <Content Include="Sounds\moltov.wav" />
+    <Content Include="Sounds\no_dear.wav" />
+    <Content Include="Sounds\ogre.wav" />
+    <Content Include="Sounds\ogre1.wav" />
+    <Content Include="Sounds\portal.wav" />
+    <Content Include="Sounds\rat_humanoid.wav" />
+    <Content Include="Sounds\revolver.wav" />
+    <Content Include="Sounds\shotgun.wav" />
+    <Content Include="textAdventure.pyproj" />
     <Content Include="UpgradeLog.htm" />
+    <Content Include="__pycache__\actions.cpython-36.pyc" />
+    <Content Include="__pycache__\enemies.cpython-36.pyc" />
+    <Content Include="__pycache__\items.cpython-36.pyc" />
+    <Content Include="__pycache__\player.cpython-36.pyc" />
+    <Content Include="__pycache__\sounds.cpython-36.pyc" />
+    <Content Include="__pycache__\tiles.cpython-36.pyc" />
+    <Content Include="__pycache__\util.cpython-36.pyc" />
+    <Content Include="__pycache__\world.cpython-36.pyc" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="actions.py" />
@@ -37,7 +68,12 @@
     </Compile>
     <Compile Include="player.py" />
     <Compile Include="tiles.py" />
+    <Compile Include="util.py" />
     <Compile Include="world.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sounds\" />
+    <Folder Include="__pycache__\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

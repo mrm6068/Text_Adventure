@@ -1,5 +1,11 @@
 import sounds, time
 
+
+def printGameText(x):
+    for character in x:
+        print(character, end='')
+        time.sleep(.03)
+
 def getIntInput(sInput):
 
     while True:
