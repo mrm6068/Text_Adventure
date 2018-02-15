@@ -120,7 +120,7 @@ class VendorRoom(LootRoom):
     def add_loot(self, player):
         player.inventory.append(self.item)
 
-    def take_loot(self, player, itemIndex):
+    def give_loot(self, player, itemIndex):
         del player.inventory[itemIndex]
 
     def take_money(self, player):
@@ -156,7 +156,7 @@ class VendorRoom(LootRoom):
                     , player.inventory[itemChoice].value))
 
                 self.add_money(player, itemChoice)
-                self.take_loot(player, itemChoice)
+                self.give_loot(player, itemChoice)
 
                 print("\nYou have {} moneys\n".format(player.money))
         else:
@@ -171,13 +171,91 @@ class VendorRoom(LootRoom):
 
 class OldManVendorRoom(VendorRoom):
     def __init__(self, x, y):
-        super().__init__(x, y, items.Slingshot)
+        super().__init__(x, y, items.Slingshot())
  
     def intro_text(self, player):
         return """
         You find an old man looking to purchase some items.
         """
 
+#class LootRoom(MapTile):
+#    def __init__(self, x, y, item, beenThere):
+#        self.item = item
+#        self.beenThere = False
+#        super().__init__(x, y)
+ 
+#    def add_loot(self, player):
+#        if(self.beenThere == False):#If you have not been here...  
+#            sounds.good()
+#            player.inventory.append(self.item)#Add item to player inventory
+#            self.beenThere = True
+ 
+#    def modify_player(self, player):
+#        self.add_loot(player)
+
+class SellerRoom(MapTile):
+    def __init__(self, x, y, item):
+        self.item =[items.Moltov(),  items.Crossbow()]
+        super().__init__(x, y)
+ 
+    def add_loot(self, player, item):
+        player.inventory.append(item)
+
+    def give_money(self, player, value):
+        player.money -= value
+ 
+    def modify_player(self, player):
+
+        sell = input("\nCan I interest you in purchasing any items?(y/n): ")
+        print("")
+
+        if sell == "y" or sell == "Y":
+            for item in self.item: 
+                print(self.item.index(item),".", item.name + " - $" + str(item.value));
+            print(len(self.item),".", "Nevermind")
+      
+            while True:
+                itemChoice = util.getIntInput("\nSelect the item you would like to buy: ")
+        
+                if itemChoice not in range(0,len(self.item)+1):#+1 for nevermind choice
+                    print("\nInvalid item choice")
+                    sounds.no()
+                    continue#Restart loop
+
+                if itemChoice == len(self.item):
+                    break#needed to skip index out of range in next if.
+
+                #Not enough money
+                if self.item[itemChoice].value > player.money:
+                    print("\nNot enough money, sorry")
+                    sounds.no()
+                    continue#Restart loop
+                break#Passed validation break infinite loop
+
+            if itemChoice == len(self.item):
+                print("\nThanks anyway\n")
+                return#Nevermind was selected
+            else:
+                print("\nYou bought {} for {} moneys\n".format(self.item[itemChoice].name\
+                    , self.item[itemChoice].value))
+                
+                self.add_loot(player, self.item[itemChoice])
+                self.give_money(player, self.item[itemChoice].value)
+
+                del self.item[itemChoice]#Seller won't have this anymore
+
+                print("\nYou have {} moneys\n".format(player.money))
+        else:
+            print("\nThanks anyway\n")
+
+class LadySellerRoom(SellerRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Slingshot())
+ 
+    def intro_text(self, player):
+        return """
+        An attractive woman with some items for sale.
+        """
 
 
 class EnemyRoom(MapTile):

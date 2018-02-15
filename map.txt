@@ -4,6 +4,6 @@
 		EmptyCavePath	GiantSpiderRoom	
 		EmptyCavePath		
 		SkullKeyRoom	BearRoom	OgreRoom
-GiantSpiderRoom	HellhoundRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
+GiantSpiderRoom	LadySellerRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
 		BlueKeyRoom	EmptyCavePath	BlueChestRoom
 		PotionRoom	OgreRoom	SkullChestRoom
