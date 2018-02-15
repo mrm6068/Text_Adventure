@@ -38,6 +38,7 @@ class StartingRoom(MapTile):
     # override the intro_text method in the superclass
     def intro_text(self, player):
 
+      
         return """
         You find yourself in a cave with a flickering torch on the wall.
         You can make out four paths, each equally as dark and foreboding.
