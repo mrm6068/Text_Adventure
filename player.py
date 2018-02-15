@@ -71,9 +71,11 @@ class Player():
             print(weapon_list.index(weapon),".", weapon.name)
         #input validation to get int from user in proper range
         while True:
-            print("\nSelect the weapon you want to equip: ")
+            #print("""\nSelect the weapon you want to equip: """)
+            #print("")
 
-            itemChoice = util.getIntInput()
+            itemChoice = util.getIntInput("""\
+                     Select the weapon you want to equip: """)
 
             if itemChoice not in range(0,len(weapon_list)):
                 print("\nInvalid weapon choice")
@@ -82,7 +84,7 @@ class Player():
             break#Passed validation break infinite loop
 
         print('\n')
-        print(weapon_list[self.chosenWpn].name, "equipped.\n")
+        print(weapon_list[itemChoice].name, "equipped.\n")
         self.currentWpn = weapon_list[itemChoice]
         #else:
             #print("\nInvalid weapon chosen.\n")

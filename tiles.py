@@ -158,13 +158,8 @@ class VendorRoom(LootRoom):
             print(len(player.inventory),".", "Nevermind")
       
             while True:
-                try:
-                    itemChoice = int(input("\nSelect the item you would like to sell: "))
-                except ValueError:#Catch exception if input isn't int
-                    print("\nInvalid item choice")
-                    sounds.no()
-                    module1.getIntInput()
-                    continue#Restart loop
+                itemChoice = util.getIntInput("\nSelect the item you would like to sell: ")
+        
                 if itemChoice not in range(0,len(player.inventory)+1):#+1 for nevermind choice
                     print("\nInvalid item choice")
                     sounds.no()
