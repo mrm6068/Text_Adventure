@@ -11,6 +11,7 @@ class Player():
         self.experience = 0
         self.level = 1
         self.money = 30
+        self.attackPower = 100
         self.nextLevelUp = 10
         self.chosenWpn = None
         self.currentWpn = self.inventory[1]
@@ -116,7 +117,8 @@ class Player():
 
         print("{} lost {} HP\n".format(enemy.name, r))
         time.sleep(1)
-        enemy.hp -= r
+        #player attackPower starts at 100, gets stronger when level up
+        enemy.hp -= int((r*(self.attackPower/100)))
 
         #Check if weapon is projectile to subtract 1 ammo each attack
         if isinstance(self.currentWpn, items.Projectile):
@@ -154,17 +156,20 @@ class Player():
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.20)#Max HP increases 20% per level
+                self.attackPower = int(self.maxHp * 1.20)
                 print("\n\n* * * * * * * * * * *\n")
                 print("You've reached level {}!".format(self.level))
                 print("\n* * * * * * * * * * *\n\n")
                 sounds.levelUp()
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))
-                time.sleep(2)
+                time.sleep(1)
+                print("Attack Power increased to {}\n".format(self.attackPower))
+                time.sleep(1)
                 print("Total XP is {}\n".format(self.experience))
-                time.sleep(2)
+                time.sleep(1)
                 print("Next level up at {} XP\n".format(self.nextLevelUp))
-                time.sleep(2)
+                time.sleep(1)
                 self.checkLevelUp()#Recursively check for multiple level ups
 
     def do_action(self, action, **kwargs):
