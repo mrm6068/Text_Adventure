@@ -279,7 +279,7 @@ class EnemyRoom(MapTile):
  
     def available_actions(self):
         if self.enemy.is_alive():
-            return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy)]
+            return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Equip()]
         else:
             return self.adjacent_moves()
 

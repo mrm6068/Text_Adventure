@@ -95,6 +95,7 @@ class Player():
         self.location_x += dx
         self.location_y += dy
         util.printGameText(world.tile_exists(self.location_x, self.location_y).intro_text(self))
+        print()
  
     def move_north(self):
         self.move(dx=0, dy=-1)
@@ -157,7 +158,7 @@ class Player():
                 self.level += 1#Level up
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.20)#Max HP increases 20% per level
-                self.attackPower = int(self.maxHp * 1.20)
+                self.attackPower = int(self.maxHp * 1.10)
                 util.printGameText("\n\n* * * * * * * * * * *\n")
                 util.printGameText("You've reached level {}!".format(self.level))
                 util.printGameText("\n* * * * * * * * * * *\n\n")
