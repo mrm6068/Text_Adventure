@@ -77,8 +77,7 @@ class Player():
             #print("""\nSelect the weapon you want to equip: """)
             #print("")
 
-            itemChoice = util.getIntInput("""\
-                     Select the weapon you want to equip: """)
+            itemChoice = util.getIntInput("""\nSelect the weapon you want to equip: """)
 
             if itemChoice not in range(0,len(weapon_list)):
                 print("\nInvalid weapon choice")
@@ -164,13 +163,13 @@ class Player():
                 print("\n* * * * * * * * * * *\n\n")
                 sounds.levelUp()
                 time.sleep(2)
-                print("Max HP increased to {}\n".format(self.maxHp))
+                print(" * Max HP increased to {}\n".format(self.maxHp))
                 time.sleep(1)
-                print("Attack Power increased to {}\n".format(self.attackPower))
+                print(" * Attack Power increased to {}\n".format(self.attackPower))
                 time.sleep(1)
-                print("Total XP is {}\n".format(self.experience))
+                print(" * Total XP is {}\n".format(self.experience))
                 time.sleep(1)
-                print("Next level up at {} XP\n".format(self.nextLevelUp))
+                print(" * Next level up at {} XP\n".format(self.nextLevelUp))
                 time.sleep(1)
                 self.checkLevelUp()#Recursively check for multiple level ups
 
