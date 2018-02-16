@@ -40,6 +40,11 @@ class Equip(Action):
     def __init__(self):
         super().__init__(method=Player.equip, name='Equip', hotkey='l')
 
+class Status(Action):
+    #Displays character's hp, xp, level
+    def __init__(self):
+        super().__init__(method=Player.status, name='Status', hotkey='p')
+
 class Attack(Action):
     def __init__(self, enemy):
         super().__init__(method=Player.attack, name="Attack", hotkey='a', enemy=enemy)

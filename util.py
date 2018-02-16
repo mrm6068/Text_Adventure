@@ -8,6 +8,9 @@ def printGameText(x):
         #print(character, end = '')
         time.sleep(.02)
 
+def pause():
+    input("Press any key to continue...")
+
 def getIntInput(sInput):
 
     while True:

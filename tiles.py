@@ -32,6 +32,7 @@ class MapTile:
         moves = self.adjacent_moves()
         moves.append(actions.ViewInventory())
         moves.append(actions.Equip())
+        moves.append(actions.Status())
         return moves
 
 class StartingRoom(MapTile):

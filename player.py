@@ -61,7 +61,15 @@ class Player():
              #if not isinstance(item, items.Weapon):
              #   print(item, '\n')
          print("\nCurrently you brandish your trusty", self.currentWpn.name, "in your hands.\n")
+         print("\nYou currently have {} gold coin\n".format(player.money))
                 
+    def status(self):
+        util.printGameText("You are level {}\n".format(self.level))
+        print(" * Current HP: {} /".format(self.hp), "{}\n".format(self.maxHp))
+        print(" * Attack Power: {}\n".format(self.attackPower))
+        print(" * Total XP: {}\n".format(self.experience))
+        print(" * XP needed for next level up: {} XP\n".format(self.nextLevelUp))
+        util.pause()
 
     def equip(self):
         print("\nThese are the weapons you currently possess.\n")
