@@ -215,6 +215,7 @@ class SellerRoom(MapTile):
                 print(self.item.index(item),".", item.name + " - $" + str(item.value));
             print(len(self.item),".", "Nevermind")
       
+
             while True:
                 itemChoice = util.getIntInput("\nSelect the item you would like to buy: ")
         

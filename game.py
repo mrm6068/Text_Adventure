@@ -8,6 +8,7 @@ def play():
     #These lines load the starting room and display the textg
     room = world.tile_exists(player.location_x, player.location_y)
     util.printGameText(room.intro_text(player))#Added player to check inventory before text
+    print("")
     while player.is_alive() and not player.victory:
         room = world.tile_exists(player.location_x, player.location_y)
         room.modify_player(player)
