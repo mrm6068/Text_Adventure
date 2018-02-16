@@ -1,4 +1,6 @@
 ﻿import items, sounds, world, random, time, tiles, actions, util
+from world import tile_exists
+from util import printGameText
 
 class Player():
     def __init__(self):
@@ -93,7 +95,7 @@ class Player():
     def move(self, dx, dy):
         self.location_x += dx
         self.location_y += dy
-        print(world.tile_exists(self.location_x, self.location_y).intro_text(self))
+        util.printGameText(world.tile_exists(self.location_x, self.location_y).intro_text(self))
  
     def move_north(self):
         self.move(dx=0, dy=-1)

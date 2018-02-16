@@ -6,7 +6,7 @@ def printGameText(x):
         sys.stdout.write(character)
         sys.stdout.flush()
         #print(character, end = '')
-        time.sleep(.03)
+        time.sleep(.02)
 
 def getIntInput(sInput):
 
