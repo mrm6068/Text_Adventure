@@ -138,20 +138,20 @@ class Player():
                 
         if not enemy.is_alive():
             print("You killed {}!\n".format(enemy.name))
-            time.sleep(2)
+            time.sleep(.5)
             self.experience += enemy.experience
             print("You gained {} XP\n".format(enemy.experience))
-            time.sleep(2)
+            time.sleep(.5)
             print("Total XP = {} \n".format(self.experience))
-            time.sleep(2)
+            time.sleep(.5)
 
             #Check for level up
             Player.checkLevelUp(self)
 
         else:
-            time.sleep(2)
-            print("{} HP is {}\n".format(enemy.name, enemy.hp))
-            time.sleep(2)
+            time.sleep(.5)
+            util.printGameText("{} HP is {}\n".format(enemy.name, enemy.hp))
+            time.sleep(.5)
 
     def checkLevelUp(self):
         if self.experience >= self.nextLevelUp:
@@ -159,9 +159,9 @@ class Player():
                 self.nextLevelUp *= 2 #Will get harder to level up each level.
                 self.maxHp = int(self.maxHp * 1.20)#Max HP increases 20% per level
                 self.attackPower = int(self.maxHp * 1.20)
-                print("\n\n* * * * * * * * * * *\n")
-                print("You've reached level {}!".format(self.level))
-                print("\n* * * * * * * * * * *\n\n")
+                util.printGameText("\n\n* * * * * * * * * * *\n")
+                util.printGameText("You've reached level {}!".format(self.level))
+                util.printGameText("\n* * * * * * * * * * *\n\n")
                 sounds.levelUp()
                 time.sleep(2)
                 print("Max HP increased to {}\n".format(self.maxHp))
