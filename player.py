@@ -70,7 +70,7 @@ class Player():
         print(" * Current HP: {} /".format(self.hp), "{}\n".format(self.maxHp))
         print(" * Attack Power: {}\n".format(self.attackPower))
         print(" * Total XP: {}\n".format(self.experience))
-        print(" * XP needed for next level up: {} XP\n".format(self.nextLevelUp - self.experience))
+        print(" * XP until next level up: {} XP\n".format(self.nextLevelUp - self.experience))
         util.pause()
 
     def equip(self):
