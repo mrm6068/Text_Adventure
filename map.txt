@@ -5,5 +5,5 @@
 		EmptyCavePath		
 		SkullKeyRoom	BearRoom	OgreRoom
 GiantSpiderRoom	LadySellerRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
-	AmeliaRoom	BlueKeyRoom	EmptyCavePath	BlueChestRoom
+	AmeliaRoom	BlueKeyRoom	ArmorRoom	BlueChestRoom
 		PotionRoom	OgreRoom	SkullChestRoom

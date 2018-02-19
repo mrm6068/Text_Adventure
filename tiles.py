@@ -292,6 +292,15 @@ class EnemyRoom(MapTile):
         if self.enemy.is_alive():
             #r makes enemy take off between 75% and 125% of damage.
             r=random.randint(int(self.enemy.damage *.75), int(self.enemy.damage*1.25))
+            #If player has armor, cut damage in half.
+            if the_player.armor:
+                r = int(r / 2)
+                the_player.armorHits += 1
+                if(the_player.armorHits > 15):
+                    the_player.armorHits = 0
+                    the_player.armor = False
+                    print("Your armor is toast\n")
+                    
             the_player.hp = the_player.hp - r
 
             if the_player.hp < 0:#No negative hp
@@ -319,6 +328,16 @@ class EmptyCavePath(MapTile):
     def modify_player(self, player):
         #Room has no action on player
         pass
+
+class ArmorRoom(MapTile):
+    def intro_text(self, player):
+        return """
+        You find armor made of mythril, you put it on.\n\
+        Damage you take will be halved for 15 hits
+        """
+
+    def modify_player(self, player):
+        player.armor = True
  
 class GiantSpiderRoom(EnemyRoom):
     def __init__(self, x, y):

@@ -16,6 +16,8 @@ class Player():
         self.attackPower = 100
         self.nextLevelUp = 10
         self.chosenWpn = None
+        self.armor = False
+        self.armorHits = 0
         self.currentWpn = self.inventory[1]
  
     def hasVisited(self):
@@ -68,7 +70,7 @@ class Player():
         print(" * Current HP: {} /".format(self.hp), "{}\n".format(self.maxHp))
         print(" * Attack Power: {}\n".format(self.attackPower))
         print(" * Total XP: {}\n".format(self.experience))
-        print(" * XP needed for next level up: {} XP\n".format(self.nextLevelUp))
+        print(" * XP needed for next level up: {} XP\n".format(self.nextLevelUp - self.experience))
         util.pause()
 
     def equip(self):
