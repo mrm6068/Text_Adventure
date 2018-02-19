@@ -85,6 +85,28 @@ class HealthRoom(MapTile):#Super to PotionRoom, ... maybe fountain room
     def modify_player(self, player):
         self.add_hp(player)
 
+class AmeliaRoom(HealthRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, 50, beenThere = False)
+
+    def intro_text(self, player):
+        util.printGameText("\nYou see Amelia. She uses her nursing skills to heal you.\n")
+              
+        util.ameliaGraphic()
+
+        if (self.health + player.hp) > player.maxHp:
+            if (player.hp) >= player.maxHp:
+                return """
+                HP already full!
+                """
+            return """
+                You gained {} HP!
+                """.format(player.maxHp - (player.hp) )
+
+        return """
+            You gained 25 HP!
+                """
+
 class PotionRoom(HealthRoom):
     def __init__(self, x, y):
         super().__init__(x, y, 25, beenThere = False)#25 hp potion
