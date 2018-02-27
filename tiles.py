@@ -391,11 +391,51 @@ class RatHumanoidRoom(EnemyRoom):
         if self.enemy.is_alive():
             sounds.ratHumanoid()
             return """
-            A Rat Humanoid, oh my!.  
+           Suddenly, out of nowhere you hear a shrieking cry. 
+		   You spot a skulking figure come out of the dark. 
+		   Its eyes glow red, and has patches of human skin with sprouts of matty fur. 
+		   Sharp looking claws gleam in the light as it approaches you, it seems ready to attack you! 
             """
         else:
             return """
-            Here's the slain rat man.
+            As you walk near the corpse of the rat man that you just slew, its red eyes still peer at you from the floor.
+            """
+
+class BatRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Bats())
+ 
+    def intro_text(self, player):
+        if self.enemy.is_alive():
+            #sounds.bats();
+            return """
+            In the dark cave, you hear small clicks. Before long, you somehow found yourself surrounded by many small bats, all of them looking towards you. 
+			The many years of pollution and evolution have made them more aggressive to the new inhabitants it now has to share their habitats with 
+			and now they seek to vent their frustration on you! 
+			You ready your weapon to intercept any bats coming towards you.
+            """
+        else:
+            return """
+            The bats that were in this area have now dispersed. The bats that were too slow or unlucky litter the floor.
+            """
+
+
+class ZombieRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Zombie())
+ 
+    def intro_text(self, player):
+        if self.enemy.is_alive():
+            #sounds.zombie()
+            return """
+            As you continue to walk in this direction, you slow down as you hear a dragging 
+			noise across the ground. Soon, a shambling corpse can be seen around the corner, 
+			and it starts groaning as it continues to shamble and turns toward you with its 
+			lifeless eyes. This must have been another failed experiment. You ready your weapon. 
+            """
+        else:
+            return """
+            As you walk over the corpse and try not notice it still twitching, it white eyes still stare blankly at the ceiling.
             """
 
 class OgreRoom(EnemyRoom):
