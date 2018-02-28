@@ -64,6 +64,45 @@ class LootRoom(MapTile):
     def modify_player(self, player):
         self.add_loot(player)
 
+class PortalRoom(MapTile):
+    def __init__(self, x, y, xChange, yChange, wentThrough = False):
+        self.xChange = xChange
+        self.yChange = yChange
+        super().__init__(x, y)
+ 
+    def modify_player(self, player):
+        player.location_x += xChange
+        player.location_y += yChange
+
+def available_actions(self):
+        """Returns all of the available actions in this room."""
+        moves = self.adjacent_moves()
+        moves.append(actions.ViewInventory())
+        moves.append(actions.Equip())
+        moves.append(actions.Status())
+        return moves
+
+
+
+class PortalOne(PortalRoom):
+    def __init__(self, x, y):
+       #self.beenThere = False
+        super().__init__(x, y, xChange = 2, yChange = 0, wentThrough = False)
+    def intro_text(self, player):
+        if self.wentThrough:
+            return """
+            The portal took you to a different room with another portal.
+            """
+        else:
+            return """
+            There is a portal.
+            """
+
+            return """
+            Your notice something shiny in the corner.
+            It's a dagger! You pick it up.
+            """
+
 class HealthRoom(MapTile):#Super to PotionRoom, ... maybe fountain room
     def __init__(self, x, y, health, beenThere = False):
         self.health = health
