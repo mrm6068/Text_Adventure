@@ -259,7 +259,7 @@ class OldManVendorRoom(VendorRoom):
 
 class SellerRoom(MapTile):
     def __init__(self, x, y, item):
-        self.item =[items.Moltov(),  items.Crossbow()]
+        self.item =[items.Moltov(),  items.Crossbow(), items.SmallPotion()]
         super().__init__(x, y)
  
     def add_loot(self, player, item):
@@ -281,7 +281,8 @@ class SellerRoom(MapTile):
 
             while True:
                 itemChoice = util.getIntInput("\nSelect the item you would like to buy: ")
-        
+                
+
                 if itemChoice not in range(0,len(self.item)+1):#+1 for nevermind choice
                     print("\nInvalid item choice")
                     sounds.no()
@@ -306,7 +307,9 @@ class SellerRoom(MapTile):
                 
                 self.add_loot(player, self.item[itemChoice])
                 self.give_money(player, self.item[itemChoice].value)
-
+                # if item is a potion
+                if isinstance(itemChoice, items.Potions):#If item is a potion...
+                    itemChoice.amt = itemChoice.amt + 1 #Add one to the amount 
                 del self.item[itemChoice]#Seller won't have this anymore
 
                 print("\nYou have {} moneys\n".format(player.money))

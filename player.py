@@ -59,7 +59,7 @@ class Player():
             if isinstance(item, items.item_class):#If item is this class...
                 item_list.append(item)#Add it to item_list
         for item in item_list:
-            print(item_list.index(item),".", item_class.name)
+            print(item_list.index(item) ,".", item_class.name, sep='')
 
     def heal(self):
         print("\nThese are the potions you currently possess.\n")
@@ -68,18 +68,21 @@ class Player():
         for potion in self.inventory: 
             if isinstance(potion, items.Potions):#If item is this class...
                 if potion.amt <= 0:
+                    self.inventory.remove(potion)
                     continue #skips this potion which you have none of
                 else:
                     potion_list.append(potion)#Add it to item_list
+        i=1
         for potion in potion_list:
-            print(potion_list.index(potion),".", potion.name)
+            print(i,". ", potion.name, sep='')
+            i+=1
         while True:
             if len(potion_list) == 0:
                 print("You have no potions.")
                 util.pause()
                 return None #no potions, get out of method
 
-            itemChoice = util.getIntInput("""\nSelect a potion: """)
+            itemChoice = util.getIntInput("""\nSelect a potion: """) - 1
 
             if itemChoice not in range(0,len(potion_list)):
                 print("\nInvalid choice")
@@ -87,14 +90,22 @@ class Player():
                 continue#Restart loop
             break#Passed validation break infinite loop
 
-        chosenPotion = potion_list[itemChoice]
+        self.healToPlayer(itemChoice, potion_list)
+
+
+    def healToPlayer(self, itemChoice, potionList): #logic for healing player
+        chosenPotion = potionList[itemChoice]
         util.printGameText("\nYou were healed for {} ".format(chosenPotion.health))
         util.printGameText("hp. \n")
-        self.hp = self.hp + potion_list[itemChoice].health
+        self.hp = self.hp + chosenPotion.health
+        chosenPotion.amt = chosenPotion.amt - 1
+        if chosenPotion.amt == 0:
+            self.inventory.remove(chosenPotion)
         sounds.drink()
         util.pause()
         if self.maxHp < self.hp:
             self.hp = self.maxHp
+
 
     def equip(self):
         print("\nThese are the weapons you currently possess.\n")
@@ -103,12 +114,14 @@ class Player():
         for item in self.inventory: 
             if isinstance(item, items.Weapon):#If item is weapon...
                 weapon_list.append(item)#Add it to weapon_list
+        i = 1
         for weapon in weapon_list:
-            print(weapon_list.index(weapon),".", weapon.name)
+            print(i,". ", weapon.name, sep='')
+            i+=1
         #input validation to get int from user in proper range
         while True:
 
-            itemChoice = util.getIntInput("""\nSelect the weapon you want to equip: """)
+            itemChoice = util.getIntInput("""\nSelect the weapon you want to equip: """) - 1
 
             if itemChoice not in range(0,len(weapon_list)):
                 print("\nInvalid weapon choice")

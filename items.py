@@ -32,9 +32,11 @@ class SmallPotion(Potions):
      def __init__(self):
         super().__init__(name="Small Potion",
                          description="A small potion.",
-                         value=50,
-                         amt=0,
+                         value=5,
+                         amt=1,
                          health=25)
+     def __str__(self):
+        return "{}\n=====\n{} \nValue: {}\nAmount: {}".format(self.name, self.description, self.value, self.amt)
 
 class Weapon(Item):
     def __init__(self, name, description, value, minDamage, maxDamage):
