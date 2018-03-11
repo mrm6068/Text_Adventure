@@ -21,6 +21,21 @@ class Gold(Item):
                          description="A round coin with {} stamped on the front.".format(str(self.amt)),
                          value=self.amt)
 
+class Potions(Item):
+    def __init__(self, name, description, value, amt, health):
+        self.amt = amt #how many of the potions you have
+        self.health = health #how much hp it heals
+
+        super().__init__(name, description, value)
+
+class SmallPotion(Potions):
+     def __init__(self):
+        super().__init__(name="Small Potion",
+                         description="A small potion.",
+                         value=50,
+                         amt=0,
+                         health=25)
+
 class Weapon(Item):
     def __init__(self, name, description, value, minDamage, maxDamage):
         self.minDamage = minDamage

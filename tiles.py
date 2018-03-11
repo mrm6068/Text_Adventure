@@ -33,6 +33,7 @@ class MapTile:
         moves.append(actions.ViewInventory())
         moves.append(actions.Equip())
         moves.append(actions.Status())
+        moves.append(actions.Heal())
         return moves
 
 class StartingRoom(MapTile):
@@ -80,6 +81,7 @@ def available_actions(self):
         moves.append(actions.ViewInventory())
         moves.append(actions.Equip())
         moves.append(actions.Status())
+        moves.append(actions.Heal())
         return moves
 
 
@@ -117,9 +119,8 @@ class HealthRoom(MapTile):#Super to PotionRoom, ... maybe fountain room
             #hp can't be higher than max hp.
             if player.hp > player.maxHp:
                 player.hp = player.maxHp
-            time.sleep(1)
-            print("HP is {}\n".format(player.hp))
-            time.sleep(1)
+            util.printGameText("HP is {}\n".format(player.hp))
+            util.pause()
  
     def modify_player(self, player):
         self.add_hp(player)
@@ -350,7 +351,10 @@ class EnemyRoom(MapTile):
  
     def available_actions(self):
         if self.enemy.is_alive():
-            return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Equip()]
+            return [actions.Flee(tile=self), 
+                    actions.Attack(enemy=self.enemy), 
+                    actions.Equip(),
+                    actions.Heal()]
         else:
             return self.adjacent_moves()
 

@@ -40,6 +40,11 @@ class Equip(Action):
     def __init__(self):
         super().__init__(method=Player.equip, name='Equip', hotkey='l')
 
+class Heal(Action):
+    """Prints the player's inventory"""
+    def __init__(self):
+        super().__init__(method=Player.heal, name='Heal', hotkey='h')
+
 class Status(Action):
     #Displays character's hp, xp, level
     def __init__(self):

@@ -5,7 +5,7 @@ from util import printGameText
 class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow(),\
-            items.Revolver(), items.FinalKey(), items.Moltov()]
+            items.Revolver(), items.FinalKey(), items.Moltov(), items.SmallPotion()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position
@@ -34,27 +34,6 @@ class Player():
             return self.hp > 0
         
  
-    #def print_inventory(self):
-    #    print('\n')
-    #    for item in self.inventory:
-    #        print(item, '\n')
-    #        time.sleep(2)#Show 1 at a time.
-
-    #def inventory_choice(self):
-    #    while True:
-    #            print("i: Inventory")
-    #            print("e: Equip item")
-    #            inventory_option = input()
-
-    #            if inventory_option in ['i', 'e']:
-    #                # will exit loop when choice is made
-    #                break
-    #            if inventory_option == 'i':
-    #               return 'i'
-
-    #            elif inventory_option == 'e':
-    #                return 'e'
-                              
 
     def print_inventory(self):
          print("This is what you have so far from your travels.\n")
@@ -73,6 +52,50 @@ class Player():
         print(" * XP until next level up: {} XP\n".format(self.nextLevelUp - self.experience))
         util.pause()
 
+    def item_choose(self, item_class):
+        self.item_class = item_class
+        item_list = []
+        for item in self.inventory: 
+            if isinstance(item, items.item_class):#If item is this class...
+                item_list.append(item)#Add it to item_list
+        for item in item_list:
+            print(item_list.index(item),".", item_class.name)
+
+    def heal(self):
+        print("\nThese are the potions you currently possess.\n")
+        potion_list = []
+        #item_choose(self, items.Potions)
+        for potion in self.inventory: 
+            if isinstance(potion, items.Potions):#If item is this class...
+                if potion.amt <= 0:
+                    continue #skips this potion which you have none of
+                else:
+                    potion_list.append(potion)#Add it to item_list
+        for potion in potion_list:
+            print(potion_list.index(potion),".", potion.name)
+        while True:
+            if len(potion_list) == 0:
+                print("You have no potions.")
+                util.pause()
+                return None #no potions, get out of method
+
+            itemChoice = util.getIntInput("""\nSelect a potion: """)
+
+            if itemChoice not in range(0,len(potion_list)):
+                print("\nInvalid choice")
+                sounds.no()
+                continue#Restart loop
+            break#Passed validation break infinite loop
+
+        chosenPotion = potion_list[itemChoice]
+        util.printGameText("\nYou were healed for {} ".format(chosenPotion.health))
+        util.printGameText("hp. \n")
+        self.hp = self.hp + potion_list[itemChoice].health
+        sounds.drink()
+        util.pause()
+        if self.maxHp < self.hp:
+            self.hp = self.maxHp
+
     def equip(self):
         print("\nThese are the weapons you currently possess.\n")
 
@@ -84,8 +107,6 @@ class Player():
             print(weapon_list.index(weapon),".", weapon.name)
         #input validation to get int from user in proper range
         while True:
-            #print("""\nSelect the weapon you want to equip: """)
-            #print("")
 
             itemChoice = util.getIntInput("""\nSelect the weapon you want to equip: """)
 
@@ -98,8 +119,6 @@ class Player():
         print('\n')
         print(weapon_list[itemChoice].name, "equipped.\n")
         self.currentWpn = weapon_list[itemChoice]
-        #else:
-            #print("\nInvalid weapon chosen.\n")
 
     def move(self, dx, dy):
         self.location_x += dx
