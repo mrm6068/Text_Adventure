@@ -42,25 +42,30 @@ class StartingRoom(MapTile):
 
       
         return """
-        The Year is 2045, the world has entered the second ice age for over 200 years. 
-        Forced to retreat into the underground, humanity has lived on scrapping by. 
-        Recently a plague has swept through humanity from the poor conditions of living underground. 
-        Lately, scientist has discovered something interesting…. 
-        Rats have evolved to being able to live in the world’s harsh conditions and are immune to the plague. 
-        In a secret government base, Dr. Beaumont Liston has been testing for years to make the perfect humanoid, 
-        performing test on live humans and animals mixing their DNA and forcing them to live in the cold 
-        and how they survive. You are the next test subject to be the perfect rat humanoid which is believed 
-        to be able to live in the world and immune to the disease. 
-        Tests have also been able to enhance the body and mind once perfected to create the ultimate being……
-        until something happened and all the subjects are released in the compound. 
-        You wake up to monsters running all around the place, your only task… survive.
+        The Year is 2045, the world has entered the second ice age for over
+        200 years. Forced to retreat into the underground, humanity has lived
+        on scrapping by. Recently a plague has swept through humanity from 
+        the poor conditions of living underground. Lately, scientist has 
+        discovered something interesting…. Rats have evolved to being able 
+        to live in the world’s harsh conditions and are immune to the plague. 
+        In a secret government base, Dr. Beaumont Liston has been testing for
+        years to make the perfect humanoid, performing test on live humans and
+        animals mixing their DNA and forcing them to live in the cold and how 
+        they survive. You are the next test subject to be the perfect rat 
+        humanoid which is believed to be able to live in the world and immune
+        to the disease. Tests have also been able to enhance the body and mind
+        once perfected to create the ultimate being……  until something happened
+        and all the subjects are released in the compound. You wake up to 
+        monsters running all around the place, your only task… survive.
 
 
-        Woman: Hello….? please wake up!!! It’s not safe to lay here. We must leave this place
+        Woman: Hello….? please wake up!!! It’s not safe to lay here. We must 
+               leave this place
         You: Wh-where am I? Who are you?
         Woman: My name is Amelia, I am here trying to find my Daughter, 
                Elizabeth…. She’s only 13 years old and there are monsters 
-               running rampant in this place. Please you have to help me find her!
+               running rampant in this place. Please you have to help me 
+               find her!
         """
  
     def modify_player(self, player):
