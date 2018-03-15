@@ -147,7 +147,7 @@ class BlueKey(Item):
 class FinalKey(Item):
     # __init__ is the contructor method
     def __init__(self): 
-        super().__init__(name="Blue Key",
-                         description="A blue key",
+        super().__init__(name="Final Key",
+                         description="The last key you will ever need",
                          value=5)
         
