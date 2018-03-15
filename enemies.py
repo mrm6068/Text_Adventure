@@ -27,7 +27,7 @@ class Bear(Enemy):
 
 class RatHumanoid(Enemy):
     def __init__(self):
-        super().__init__(name="Rat Humanoid", hp=200, damage=35, experience=1000)
+        super().__init__(name="Amelia", hp=200, damage=35, experience=1000)
 
 class Bats(Enemy):
     def __init__(self):
