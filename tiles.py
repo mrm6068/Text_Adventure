@@ -481,7 +481,7 @@ class ZombieRoom(EnemyRoom):
             """
         else:
             return """
-            As you walk over the corpse and try not notice it still twitching, it white eyes still stare blankly at the ceiling.
+            As you walk over the corpse and try not to notice it still twitching, it white eyes still stare blankly at the ceiling.
             """
 
 class OgreRoom(EnemyRoom):
