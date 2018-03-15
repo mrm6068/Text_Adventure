@@ -585,9 +585,32 @@ class FindDaggerRoom(LootRoom):
             util.dagRoomGraphic()
 
             return """
-            Your notice something shiny in the corner.
+            You notice something shiny in the corner.
             It's a dagger! You pick it up.
             """
+
+class FindTundrasEndRoom(LootRoom):
+    def __init__(self, x, y):
+       #self.beenThere = False
+        super().__init__(x, y, items.TundrasEnd(), beenThere = False)
+
+
+ 
+    def intro_text(self, player):
+        if self.beenThere:
+            return """
+            You have been here before...
+            This is where you found that massive sword!
+            """
+        else:
+            
+
+            return """
+            In the center of the room is a massive sword on a pedestal..
+            As you pick it up, it feels almost as if the sword has been
+            waiting for you.....
+            """
+
 
 class ChestRoom(LootRoom):
     def __init__(self, x, y, item, key, gotKey, beenThere, gotBox):
@@ -713,11 +736,20 @@ class BlueKeyRoom(LootRoom):
 class LeaveCaveRoom(MapTile):
     def intro_text(self, player):
         return """
-        You see a bright light in the distance...
-        ... it grows as you get closer! It's sunlight!
- 
- 
-        Victory is yours!
+        You’ve beaten Amelia and as her body lays still on the ground, you walk over to 
+        Elizabeth to free her from the machine. She is still breathing and wakes up to 
+        her in your arms. She hugs you and thanks you for saving her. You carry her out 
+        of the laboratory but hear something move. You look over at Amelia’s body and 
+        its not there. You turn around and see her standing in front of you. You reach 
+        for your small dagger and thrust it into her heart…… but not before she drives 
+        her claws into your chest. As death creeps up on you and you can feel your 
+        last breath being drawn, you give Elizabeth a map and prompt her to go to your 
+        family’s place where you lived. You tell her she will be safe there and to 
+        leave you here. As she runs away crying, you have a smile on your face. 
+        “I guess Amelia was right” you say. “It takes the sacrifice of one to 
+        save millions.” 
+        
+        You close your eyes and embrace your frozen grave.
         """
  
     def modify_player(self, player):

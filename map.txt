@@ -1,7 +1,7 @@
 			LeaveCaveRoom	
 			RatHumanoidRoom	
 			LeaveCaveRoomEntrance	
-		EmptyCavePath	GiantSpiderRoom	
+		FindTundrasEndRoom	GiantSpiderRoom	
 		EmptyCavePath		
 		SkullKeyRoom	BearRoom	OgreRoom
 GiantSpiderRoom	LadySellerRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom

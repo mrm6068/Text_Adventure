@@ -151,3 +151,11 @@ class FinalKey(Item):
                          description="The last key you will ever need",
                          value=5)
         
+
+class TundrasEnd(Weapon):
+    def __init__(self):
+        super().__init__(name="Tundra's End",
+                         description="A massive sword that feels enchanted by the power of the cold outside.",
+                         value=300,
+                         minDamage=50,
+                         maxDamage=80)
