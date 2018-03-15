@@ -205,15 +205,15 @@ class Player():
                 util.printGameText("You've reached level {}!".format(self.level))
                 util.printGameText("\n* * * * * * * * * * *\n\n")
                 sounds.levelUp()
-                time.sleep(2)
+                time.sleep(1)
                 print(" * Max HP increased to {}\n".format(self.maxHp))
-                time.sleep(1)
+                time.sleep(.5)
                 print(" * Attack Power increased to {}\n".format(self.attackPower))
-                time.sleep(1)
+                time.sleep(.5)
                 print(" * Total XP is {}\n".format(self.experience))
-                time.sleep(1)
+                time.sleep(.5)
                 print(" * Next level up at {} XP\n".format(self.nextLevelUp))
-                time.sleep(1)
+                time.sleep(.5)
                 self.checkLevelUp()#Recursively check for multiple level ups
 
     def do_action(self, action, **kwargs):
