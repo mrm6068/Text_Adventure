@@ -2,11 +2,12 @@ import sounds, time, sys
 
 
 def printGameText(x):
-    for character in x:
-        sys.stdout.write(character)
-        sys.stdout.flush()
+    print(x)
+    #for character in x:
+        #sys.stdout.write(character)
+        #sys.stdout.flush()
         #print(character, end = '')
-        time.sleep(.02)
+        #time.sleep(.035)
 
 def pause():
     input("Press any key to continue...")

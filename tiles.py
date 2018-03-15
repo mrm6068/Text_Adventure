@@ -42,8 +42,25 @@ class StartingRoom(MapTile):
 
       
         return """
-        You find yourself in a cave with a flickering torch on the wall.
-        You can make out four paths, each equally as dark and foreboding.
+        The Year is 2045, the world has entered the second ice age for over 200 years. 
+        Forced to retreat into the underground, humanity has lived on scrapping by. 
+        Recently a plague has swept through humanity from the poor conditions of living underground. 
+        Lately, scientist has discovered something interesting…. 
+        Rats have evolved to being able to live in the world’s harsh conditions and are immune to the plague. 
+        In a secret government base, Dr. Beaumont Liston has been testing for years to make the perfect humanoid, 
+        performing test on live humans and animals mixing their DNA and forcing them to live in the cold 
+        and how they survive. You are the next test subject to be the perfect rat humanoid which is believed 
+        to be able to live in the world and immune to the disease. 
+        Tests have also been able to enhance the body and mind once perfected to create the ultimate being……
+        until something happened and all the subjects are released in the compound. 
+        You wake up to monsters running all around the place, your only task… survive.
+
+
+        Woman: Hello….? please wake up!!! It’s not safe to lay here. We must leave this place
+        You: Wh-where am I? Who are you?
+        Woman: My name is Amelia, I am here trying to find my Daughter, 
+               Elizabeth…. She’s only 13 years old and there are monsters 
+               running rampant in this place. Please you have to help me find her!
         """
  
     def modify_player(self, player):
@@ -498,6 +515,24 @@ class OgreRoom(EnemyRoom):
             return """
             Here's that dead ogre.
             """
+
+class CrawlerRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Crawler())
+ 
+    def intro_text(self, player):
+        if self.enemy.is_alive():
+            return """
+            Walking along this path, you suddenly feel a chill creep up your spine. 
+            You then notice a crawling figure's shadow before you see a horrendously 
+            mutated figure with many appendages with sharp claws on its back propped 
+            on the ceiling. It defly lands on  the ground on its four muscular limbs 
+            it used to prop itself on the celing..  
+            """
+        else:
+            return """
+            The dead abomination that could scale walls...
+            """
  
 class FindDaggerRoom(LootRoom):
     def __init__(self, x, y):
@@ -698,3 +733,154 @@ class LeaveCaveRoomEntrance(ChestRoom):
                 There is a thick metal door, must be guarding something.
                 There is a keyhole.
                 """
+
+class StoryRoom1(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        You: What are you doing here? In a place like this? 
+        Amelia: My daughter and I were bought here unwillingly by the government. 
+        Dr. Beaumont Liston wanted to preform experiments on my daughter, 
+        saying she was special. That she was the key to saving humanity. 
+        But I saw what he’s done, He only creates monsters and I wasn’t having it.
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoom2(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        You: What are these creatures?
+        Amelia: These are Dr. Liston’s creations. 
+        For years he tested the genetics of humans and animals, trying to create 
+        the ultimate being for the new world by mixing DNA.  These are all his failures. 
+        He takes them and locks them away to die.
+        You: I guess they are pretty pissed about it huh?
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoom3(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        You: Do you know where Elizabeth could be?
+        Amelia: Dr. Liston was planning to do an operation on her. 
+        She was so scared but when the place went downhill, 
+        she ran away and locked herself in the North-West corridor. She must be there.
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoom4(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        You: Why do you know so much about this place?
+        Amelia: I used to work here as a nurse, tending to the patients when 
+        Dr. Liston finished working on them.
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoom5(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        **Doctor Liston’s body lays on the ground**
+        You: He’s…. Dead? But how?
+        Amelia: He was probably attacked by something he created. Serves him right.
+        You: I don’t think so……He was shot.
+        Amelia: Shot….. he was a monster anyways. Leave him, we must press onwards...
+        **Amelia walks away**
+        Voice:                          wait…..
+        You: Dr. Liston? 
+        Liston: She is Lying to you….. She’s the reason you’re here… don’t let her… get….. Elizabeth…..
+        **Listion Dies (again)**
+        You start to wonder if you should be helping her….
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoom6(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        Amelia: Just up ahead is my daughter. She must be so scared, but I will take care of her.
+        You: I hope you are ensuring her safety.
+        Amelia: She’s my Daughter, I only want what’s best for her.
+        You: ………
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoom7(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        Amelia: Elizabeth! Come here, my child.
+        Elizabeth stands there shaking...
+        Amelia: Did you not hear me? Come here!
+        Elizabeth: NO! You killed my father and now you want to kill me for your stupid experiments!
+        You: What? Who is her father?
+        Amelia: Don’t listen to this child, she knows nothing!
+        Elizabeth: Dr. Liston! He was my dad and she shot him for wanting to save me from this woman! 
+                   She wants to take my heart out to complete and mass produce her rat formula.
+        You: I thought she was your daughter! You lied about everything!
+        Amelia: ... You know, I thought you would be smart enough to see who’s in the right here. 
+                    But obviously you want to share a similar fate as that man.
+        **Amelia draws a gun and fires at you, you barely dodge it as the bullet grazes your arm. 
+        Amelia then pulls out a taser and hits Elizabeth. She grabs her and runs away. 
+        You can hear Elizabeth’s screams coming from the far north end of the compound.**
+        I have to go save Elizabeth!
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass
+
+class StoryRoomFinal(MapTile):
+    # override the intro_text method in the superclass
+    def intro_text(self, player):
+
+        return """
+        Amelia: Elizabeth! Come here, my child.
+        Elizabeth stands there shaking...
+        Amelia: Did you not hear me? Come here!
+        Elizabeth: NO! You killed my father and now you want to kill me for your stupid experiments!
+        You: What? Who is her father?
+        Amelia: Don’t listen to this child, she knows nothing!
+        Elizabeth: Dr. Liston! He was my dad and she shot him for wanting to save me from this woman! 
+                   She wants to take my heart out to complete and mass produce her rat formula.
+        You: I thought she was your daughter! You lied about everything!
+        Amelia: ... You know, I thought you would be smart enough to see who’s in the right here. 
+                    But obviously you want to share a similar fate as that man.
+        **Amelia draws a gun and fires at you, you barely dodge it as the bullet grazes your arm. 
+        Amelia then pulls out a taser and hits Elizabeth. She grabs her and runs away. 
+        You can hear Elizabeth’s screams coming from the far north end of the compound.**
+        I have to go save Elizabeth!
+        """
+ 
+    def modify_player(self, player):
+        #Room has no action on player
+        pass

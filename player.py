@@ -5,7 +5,7 @@ from util import printGameText
 class Player():
     def __init__(self):
         self.inventory = [items.Gold(15), items.Pillow(), items.Dagger(), items.Crossbow(),\
-            items.Revolver(), items.FinalKey(), items.Moltov(), items.SmallPotion()]
+            items.Revolver(), items.Moltov(), items.FinalKey(), items.SmallPotion()]
         self.hp = 100
         self.maxHp = 100
         self.location_x, self.location_y = world.starting_position

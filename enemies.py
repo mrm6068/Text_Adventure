@@ -27,12 +27,16 @@ class Bear(Enemy):
 
 class RatHumanoid(Enemy):
     def __init__(self):
-        super().__init__(name="Rat Humanoid", hp=200, damage=20, experience=1000)
+        super().__init__(name="Rat Humanoid", hp=200, damage=35, experience=1000)
 
 class Bats(Enemy):
     def __init__(self):
-        super().__init__(name="Bats", hp=50, damage=25, experience=30)
+        super().__init__(name="Bats", hp=15, damage=10, experience=30)
 
 class Zombie(Enemy):
     def __init__(self):
-        super().__init__(name="Zombie", hp=100, damage=20, experience=20)
+        super().__init__(name="Zombie", hp=25, damage=20, experience=20)
+
+class Crawler(Enemy):
+    def __init__(self):
+        super().__init__(name="Crawler", hp=50, damage=20, experience=35)

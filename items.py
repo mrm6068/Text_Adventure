@@ -87,7 +87,7 @@ class Crossbow(Projectile):
                          value=30,
                          minDamage=7,
                          maxDamage=13,
-                         ammo = 2)
+                         ammo = 5)
     def sound(self):
         sounds.arrow()
 
@@ -144,52 +144,10 @@ class BlueKey(Item):
                          description="A blue key",
                          value=5)
 
-
-class Key1(Item):
+class FinalKey(Item):
     # __init__ is the contructor method
     def __init__(self): 
-        super().__init__(name="Key 1",
-                         description="A brass key with a 1 imprinted on it",
-                         value=1)
-
-class Key2(Item):
-    # __init__ is the contructor method
-    def __init__(self): 
-        super().__init__(name="Key 2",
-                         description="A polished key with a 2 imprinted on it",
-                         value=2)
-
-class Key3(Item):
-    # __init__ is the contructor method
-    def __init__(self): 
-        super().__init__(name="Key 3",
-                         description="A bronze key with a 3 imprinted on it",
-                         value=3)
-
-class Key4(Item):
-    # __init__ is the contructor method
-    def __init__(self): 
-        super().__init__(name="Lockdown Key",
-                         description="A large key that looks like it opens a prison of sorts",
-                         value=4)
-
-class Key5(Item):
-    # __init__ is the contructor method
-    def __init__(self): 
-        super().__init__(name="High Security Key",
-                         description="This silver key looks important",
+        super().__init__(name="Blue Key",
+                         description="A blue key",
                          value=5)
-
-class Key6(Item):
-    # __init__ is the contructor method
-    def __init__(self): 
-        super().__init__(name="Gold Key",
-                         description="This key was well hidden in a high security area, perhaps it hides something spectacular",
-                         value=10)
-
-class Key7(Item):
-    # __init__ is the contructor method
-    def __init__(self): 
-        super().__init__(name="Titanium Key",
-                         description="Light but impossible to bend...",
-                         value=5)
+        
