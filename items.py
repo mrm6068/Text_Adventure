@@ -160,10 +160,10 @@ class TundrasEnd(Weapon):
                          minDamage=50,
                          maxDamage=80)
 
-class Spear(Weapon):
+class LargeHammer(Weapon):
     def __init__(self):
-        super().__init__(name="Spear",
-                         description="A long and heavy spear.",
+        super().__init__(name="Large Hammer",
+                         description="A long and heavy hammer.",
                          value=20,
                          minDamage=20,
                          maxDamage=28)

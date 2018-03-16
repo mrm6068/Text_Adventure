@@ -625,6 +625,27 @@ class FindTundrasEndRoom(LootRoom):
             waiting for you.....
             """
 
+class FindLargeHammer(LootRoom):
+    def __init__(self, x, y):
+       #self.beenThere = False
+        super().__init__(x, y, items.LargeHammer(), beenThere = False)
+
+
+ 
+    def intro_text(self, player):
+        if self.beenThere:
+            return """
+            You have been here before...
+            This is where you found that hammer!
+            """
+        else:
+            
+
+            return """
+            Over in the corner of the room you spot a massive mallet..
+            Probably a good idea to hit things with this.
+            """
+
 
 class ChestRoom(LootRoom):
     def __init__(self, x, y, item, key, gotKey, beenThere, gotBox):
