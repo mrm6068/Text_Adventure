@@ -112,8 +112,8 @@ class Revolver(Projectile):
         super().__init__(name="Revolver",
                          description="A 5-shot revolver",
                          value=30,
-                         minDamage=14,
-                         maxDamage=21,
+                         minDamage=40,
+                         maxDamage=50,
                          ammo = 5)
     def sound(self):
         sounds.gun()

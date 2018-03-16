@@ -647,6 +647,28 @@ class FindLargeHammer(LootRoom):
             Probably a good idea to hit things with this.
             """
 
+class FindGunRoom(LootRoom):
+    def __init__(self, x, y):
+       #self.beenThere = False
+        super().__init__(x, y, items.Revolver(), beenThere = False)
+
+
+ 
+    def intro_text(self, player):
+        if self.beenThere:
+            return """
+            You have been here before...
+            This is where you found that revolver!
+            """
+        else:
+            
+
+            return """
+            A gun...
+            This could certainly come in handy in here.
+            Looks like it has 5 bullets in it.
+            """
+
 
 class ChestRoom(LootRoom):
     def __init__(self, x, y, item, key, gotKey, beenThere, gotBox):
