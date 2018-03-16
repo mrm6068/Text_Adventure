@@ -170,14 +170,15 @@ class AmeliaRoom(HealthRoom):
             You gained 25 HP!
                 """
 
+#using this as a fountain now
 class PotionRoom(HealthRoom):
     def __init__(self, x, y):
-        super().__init__(x, y, 25, beenThere = False)#25 hp potion
+        super().__init__(x, y, 50, beenThere = False)#50 hp fountain
 
     def intro_text(self, player):
         if self.beenThere:
             return "\nBroken glass crunches under your feet.\
-                    \nThis is the room you found the potion.\n"
+                    \nThis is the room you found the health fountain.\n"
               
         else:
             util.potionGraphics()
@@ -192,7 +193,7 @@ class PotionRoom(HealthRoom):
                     """.format(player.maxHp - (player.hp) )
 
             return """
-                You gained 25 HP!
+                You gained 50 HP!
                 """
                 
 class SmallPotionRoom(LootRoom):

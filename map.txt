@@ -4,6 +4,6 @@
 		FindTundrasEndRoom	GiantSpiderRoom	
 		EmptyCavePath		
 		SkullKeyRoom	BearRoom	OgreRoom
-GiantSpiderRoom	StoryRoom7	StartingRoom	OldManVendorRoom	FindDaggerRoom
+GiantSpiderRoom	PotionRoom	StartingRoom	OldManVendorRoom	FindDaggerRoom
 	AmeliaRoom	BlueKeyRoom	ArmorRoom	BlueChestRoom
 		PotionRoom	OgreRoom	SkullChestRoom

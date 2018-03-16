@@ -46,24 +46,33 @@ def dagRoomGraphic():
 
   
 def potionGraphics():
-    print( """\n   /***\\""")
-    time.sleep(.2)
-    print( """  /^^^^^\\""") 
-    time.sleep(.2)
-    print( """ /       \\""")
-    time.sleep(.2)
-    print( """< POTION  >""")
-    time.sleep(.2)
-    print( """ \       /""")
-    time.sleep(.2)
-    print( """  \     /""")
-    time.sleep(.2)
-    print( """   \___/\n""")
+    printGameText("""                      .      .       .       .
+  .   .       .          .      . .      .         .          .    .
+         .       .         .    .   .         .         .            .
+    .   .    .       .         . . .        .        .     .    .
+ .          .   .       .       . .      .        .  .              .
+      .  .    .  .       .     . .    .       . .      .   .        .
+ .   .       .    . .      .    . .   .      .     .          .     .
+    .            .    .     .   . .  .     .   .               .
+     .               .  .    .  . . .    .  .                 .
+                        . .  .  . . .  . .
+                            . . . . . .
+                              . . . .
+                               I . I
+                 _______________III_______________
+                /    .       .       .       .    \\
+               ( ~~~ .  ~~~  .  ~~~  .  ~~~  . ~~~ )
+                 \SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS/
+                    \ ======================= /
+                        \SSSSSSSSSSSSSSSSS/
+                     ________\       /________
+                    (=+=+=+=+=+=+=+=+=+=+=+=+=)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~""")
     time.sleep(.5)
-    print('You found a bottle and you drink the purple potion.\n')
+    print('You found a glass fountain and you drink from it feeling restored.\n')
     sounds.drink()
     time.sleep(.5)
-    print('You smash the bottle.')
+    print('You break the fountain as you try to lean away from it.')
     sounds.breakGlass()
     time.sleep(.5)
 
