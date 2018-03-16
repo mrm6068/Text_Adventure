@@ -37,10 +37,11 @@ class MapTile:
         return moves
 
 class StartingRoom(MapTile):
+
     # override the intro_text method in the superclass
     def intro_text(self, player):
 
-      
+
         return """
         The Year is 2045, the world has entered the second ice age for over
         200 years. Forced to retreat into the underground, humanity has lived
@@ -60,12 +61,12 @@ class StartingRoom(MapTile):
 
 
         Woman: Hello….? please wake up!!! It’s not safe to lay here. We must 
-               leave this place
+                leave this place
         You: Wh-where am I? Who are you?
         Woman: My name is Amelia, I am here trying to find my Daughter, 
-               Elizabeth…. She’s only 13 years old and there are monsters 
-               running rampant in this place. Please you have to help me 
-               find her!
+                Elizabeth…. She’s only 13 years old and there are monsters 
+                running rampant in this place. Please you have to help me 
+                find her!
         """
  
     def modify_player(self, player):
