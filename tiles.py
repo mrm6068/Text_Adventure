@@ -819,20 +819,20 @@ class LeaveCaveRoomEntrance(ChestRoom):
         if self.gotBox:
             if self.beenThere:
                 return """
-                        Do you dare enter the unlocked door?
+            Do you dare enter the unlocked door?
                         """
             sounds.chestOpen()#Will be door open
             self.gotBox = True#Door unlocked
             return """
-                    You unlocked the metal door to travel northward.
-                    Something seems off.
-                    Continue at your own risk.
+            You unlocked the metal door to travel northward.
+            Something seems off.
+            Continue at your own risk.
 
                     """
         else: 
             return"""
-                There is a thick metal door, must be guarding something.
-                There is a keyhole.
+            There is a thick metal door, must be guarding something.
+            There is a keyhole.
                 """
 
 class StoryRoom1(LootRoom):
@@ -844,7 +844,7 @@ class StoryRoom1(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
         
         else:
@@ -869,7 +869,7 @@ class StoryRoom2(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
 
         else:
@@ -895,7 +895,7 @@ class StoryRoom3(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
 
         else:
@@ -919,7 +919,7 @@ class StoryRoom4(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
 
         else:
@@ -942,7 +942,7 @@ class StoryRoom5(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
 
         else:
@@ -973,7 +973,7 @@ class StoryRoom6(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
         else:
             return """
@@ -997,7 +997,7 @@ class StoryRoom7(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
 
         else:
@@ -1018,7 +1018,7 @@ class StoryRoom7(LootRoom):
             Amelia then pulls out a taser and hits Elizabeth. She grabs her and runs away. 
             You can hear Elizabeth’s screams coming from the far north end of the compound.**
             I have to go save Elizabeth!
-        """
+            """
  
     def modify_player(self, player):
         #Room has no action on player
@@ -1033,7 +1033,7 @@ class StoryRoomFinal(LootRoom):
 
         if self.beenThere:
             return """
-                   This room looks familiar...
+            This room looks familiar...
             """
 
         else:
