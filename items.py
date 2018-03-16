@@ -71,8 +71,8 @@ class Dagger(Weapon):
         super().__init__(name="Dagger",
                          description="A small dagger with some rust. Somewhat more dangerous than a rock.",
                          value=10,
-                         minDamage=3,
-                         maxDamage=5)
+                         minDamage=7,
+                         maxDamage=13)
 
 class Projectile(Weapon):
     def __init__(self, name, description, value, minDamage, maxDamage, ammo):
@@ -90,8 +90,8 @@ class Crossbow(Projectile):
         super().__init__(name="Crossbow",
                          description="A wooden crossbow",
                          value=30,
-                         minDamage=7,
-                         maxDamage=13,
+                         minDamage=20,
+                         maxDamage=27,
                          ammo = 5)
     def sound(self):
         sounds.arrow()
@@ -154,7 +154,7 @@ class FinalKey(Item):
     def __init__(self): 
         super().__init__(name="Final Key",
                          description="The last key you will ever need",
-                         value=5)
+                         value=40)
         
 
 class TundrasEnd(Weapon):

@@ -296,7 +296,7 @@ class OldManVendorRoom(VendorRoom):
 
 class SellerRoom(MapTile):
     def __init__(self, x, y, item):
-        self.item =[items.Moltov(),  items.Crossbow(), items.SmallPotion()]
+        self.item =[items.Moltov(),  items.Crossbow(), items.SmallPotion(), items.FinalKey()]
         super().__init__(x, y)
  
     def add_loot(self, player, item):
