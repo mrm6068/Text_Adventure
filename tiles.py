@@ -769,12 +769,25 @@ class SkullKeyRoom(LootRoom):
     def intro_text(self, player):
         if self.beenThere:
             return """
-            your in the room where you found the skull key
+            This is the room where you found the skull key
             """
         else:
             return"""
-            You find a key shaped like a skull
+            You walk into the middle of the room and find a key shaped like a skull.
+            The door behind you slams shut and doesnt have a way to open it...
+            Better press forward.
             """
+
+    def adjacent_moves(self):
+        """Returns all move actions for adjacent tiles."""
+        moves = []
+        if world.tile_exists(self.x + 1, self.y):
+            moves.append(actions.MoveEast())
+        if world.tile_exists(self.x - 1, self.y):
+            moves.append(actions.MoveWest())
+        if world.tile_exists(self.x, self.y - 1):
+            moves.append(actions.MoveNorth())
+        return moves
 
 class BlueKeyRoom(LootRoom):
     def __init__(self, x, y):
