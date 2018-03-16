@@ -21,6 +21,11 @@ class Gold(Item):
                          description="A round coin with {} stamped on the front.".format(str(self.amt)),
                          value=self.amt)
 
+class blank(Item):
+    def __init__(self):
+        pass
+
+
 class Potions(Item):
     def __init__(self, name, description, value, amt, health):
         self.amt = amt #how many of the potions you have
