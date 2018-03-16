@@ -194,7 +194,20 @@ class PotionRoom(HealthRoom):
                 You gained 25 HP!
                 """
                 
+class SmallPotionRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.SmallPotion(), beenThere = False)
 
+    def intro_text(self, player):
+        if self.beenThere:
+            return """
+            your in the room where you found the small potion
+            """
+        else:
+            return"""
+            You find a small potion                           
+            You put it in your bag
+            """
                     
 
 
