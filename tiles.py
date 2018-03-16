@@ -522,9 +522,9 @@ class BatRoom(EnemyRoom):
             #sounds.bats();
             return """
             In the dark cave, you hear small clicks. Before long, you somehow found yourself surrounded by many small bats, all of them looking towards you. 
-			The many years of pollution and evolution have made them more aggressive to the new inhabitants it now has to share their habitats with 
-			and now they seek to vent their frustration on you! 
-			You ready your weapon to intercept any bats coming towards you.
+            The many years of pollution and evolution have made them more aggressive to the new inhabitants it now has to share their habitats with 
+            and now they seek to vent their frustration on you! 
+            You ready your weapon to intercept any bats coming towards you.
             """
         else:
             return """
@@ -541,9 +541,9 @@ class ZombieRoom(EnemyRoom):
             #sounds.zombie()
             return """
             As you continue to walk in this direction, you slow down as you hear a dragging 
-			noise across the ground. Soon, a shambling corpse can be seen around the corner, 
-			and it starts groaning as it continues to shamble and turns toward you with its 
-			lifeless eyes. This must have been another failed experiment. You ready your weapon. 
+            noise across the ground. Soon, a shambling corpse can be seen around the corner, 
+            and it starts groaning as it continues to shamble and turns toward you with its 
+            lifeless eyes. This must have been another failed experiment. You ready your weapon. 
             """
         else:
             return """
