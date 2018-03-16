@@ -1,9 +1,15 @@
-			LeaveCaveRoom	
-			RatHumanoidRoom	
-			LeaveCaveRoomEntrance	
-		FindTundrasEndRoom	GiantSpiderRoom	
-		EmptyCavePath		
-		SkullKeyRoom	BearRoom	OgreRoom
-GiantSpiderRoom	PotionRoom	StartingRoom	FindGunRoom	FindDaggerRoom
-	AmeliaRoom	BlueKeyRoom	ArmorRoom	BlueChestRoom
-		PotionRoom	OgreRoom	SkullChestRoom
+	RatHumanoidRoom	LeaveCaveRoom						
+	StoryRoomFinal							
+	LeaveCaveRoomEntrance				EmptyCavePath	EmptyCavePath	EmptyCavePath	FindTundrasEndRoom
+	StoryRoom7		OgreRoom		SmallPotionRoom			
+OldManVendorRoom	SmallPotionRoom	StoryRoom6	FindGunRoom	StoryRoom5	EmptyCavePath			
+	LadySellerRoom		EmptyCavePath		ArmorRoom	PotionRoom		EmptyCavePath
+		SmallPotionRoom	FindLargeHammer		StoryRoom4			BatRoom
+				SmallPotionRoom	EmptyCavePath	StoryRoom3	StoryRoom2	SmallPotionRoom
+					SkullChestRoom			ZombieRoom
+					CrawlerRoom		OldManVendorRoom	GiantSpiderRoom
+								StoryRoom1
+								BearRoom
+								FindDaggerRoom
+								SkullKeyRoom
+								StartingRoom
