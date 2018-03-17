@@ -1,5 +1,4 @@
 	RatHumanoidRoom	LeaveCaveRoom						
-	StoryRoomFinal							
 	LeaveCaveRoomEntrance				EmptyCavePath	EmptyCavePath	EmptyCavePath	FindTundrasEndRoom
 	StoryRoom7		OgreRoom		SmallPotionRoom			
 OldManVendorRoom	SmallPotionRoom	StoryRoom6	FindGunRoom	StoryRoom5	EmptyCavePath			

@@ -123,10 +123,6 @@ class PortalOne(PortalRoom):
             There is a portal.
             """
 
-            return """
-            Your notice something shiny in the corner.
-            It's a dagger! You pick it up.
-            """
 
 class HealthRoom(MapTile):#Super to PotionRoom, ... maybe fountain room
     def __init__(self, x, y, health, beenThere = False):
@@ -203,7 +199,7 @@ class SmallPotionRoom(LootRoom):
     def intro_text(self, player):
         if self.beenThere:
             return """
-            your in the room where you found the small potion
+            This in the room where you found the small potion
             """
         else:
             return"""
@@ -796,7 +792,7 @@ class BlueKeyRoom(LootRoom):
     def intro_text(self, player):
         if self.beenThere:
             return """
-            your in the room where you found the blue key
+            This is the room where you found the blue key
             """
         else:
             return"""
@@ -867,8 +863,8 @@ class LeaveCaveRoomEntrance(ChestRoom):
                     """
         else: 
             return"""
-            There is a thick metal door, must be guarding something.
-            There is a keyhole.
+            There is a thick metal door, I need to find a way to get this open.
+            There is a keyhole, perhaps someone can sell me a key?.
                 """
 
 class StoryRoom1(LootRoom):
@@ -1059,52 +1055,6 @@ class StoryRoom7(LootRoom):
     def modify_player(self, player):
         #Room has no action on player
         pass
-
-class StoryRoomFinal(LootRoom):
-    def __init__(self, x, y):
-        super().__init__(x, y, items.blank(), beenThere = False)
-
-    # override the intro_text method in the superclass
-    def intro_text(self, player):
-
-        if self.beenThere:
-            return """
-            This room looks familiar...
-            """
-
-        else:
-            return """
-            **You walk into the lab and notice Elizabeth strapped up to a machine. 
-            There are needles in her and are draining her body of her blood**
-
-            You: Amelia!!! Stop this now!!!
-            Amelia: I’ve worked too long and too hard to be pulled down by anyone 
-            who does not believe in my methods. This is the way of life! One must 
-            sacrifice to save the lives of millions! I only need a sample of her 
-            blood to perfect my experiment! Elizabeth’s body is born immune of the 
-            disease and in her DNA is the genes used to allow for the rat DNA to 
-            be accepted into the body and work properly. 
-
-            You: No one wants to be turned into a rat! This isn’t the way!
-
-            Amelia: Then those who deny me will die. Our bodies will be able to
-            withstand the cold, immune to disease. I will open up a new chapter 
-            in human history!
-
-            **Amelia pulls a sample of the perfected formula 
-                         and injects it into her body**
-
-            Amelia: The formula only works if the body is under extreme conditions. 
-            Here, I can expose myself to the harsh cold and my body will react.
-
-            **She presses a button and the roof opens up and lets in the extreme 
-            cold. You feel it chilling your very bones. Her body begins to react, 
-            growing more and more hair. Her face begins to grow a long snout and 
-            her teeth grow razor sharp. Her eyes glow red as she hunches over on 
-            all fours. Her Muscles seem abnormally large and she is ready to fight**
-
-            Amelia: This is what the new face of humanity will look like and you will experience first hand what I can do.
-            """
  
     def modify_player(self, player):
         #Room has no action on player
